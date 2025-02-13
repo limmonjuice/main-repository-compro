@@ -1,3 +1,7 @@
+//side note = Sir, di ko magets yung functionaliy ng calculatePrice na method so nagset ako ng hardcoded value of 100
+//as a base price of all coffees, tsaka sa calculatePrice() na method ko, is mag-aadd ng certain price if yung size ba is small,
+//medium, or large. thank you sir!
+
 package com.limmon;
 
 public class Main {
