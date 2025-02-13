@@ -26,8 +26,7 @@ public class Main {
         coffee2.setDecaf(true);
         coffee2.setStock(5);
         coffee2.setBrewMethod("Drip");
-        coffee2.setFlavorNotes(new String[]{"Chocolate", "Nutty"});
-
+        coffee2.setFlavorNotes(new String[]{"Vanilla", "Fruity"});
 
         coffee1.displayDescription();
         coffee2.displayDescription();
