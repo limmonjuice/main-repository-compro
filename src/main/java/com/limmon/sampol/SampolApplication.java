@@ -16,7 +16,7 @@ public class SampolApplication {
 
 	@GetMapping("/about-me")
 	public String aboutMe(Model model) {
-		String fullName = "Zaimond Lim";
+		String fullName = "Zaimond A. Lim";
 		model.addAttribute("name", fullName);
 		String favoriteQuote = "Do nothing if you wish to be nothing";
 		model.addAttribute("quote", favoriteQuote);
