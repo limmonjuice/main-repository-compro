@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #C5C5C5;
+            color: #4C5B61;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4D6A6D;
+            color: white;
+            padding: 20px;
+        }
+        .container {
+            padding: 20px;
+        }
+        footer {
+            background-color: #829191;
+            color: white;
+            padding: 10px;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Learn About Me!</h1>
+</header>
+<div class="container">
+    <h1>Full Name: <span th:text="${name}"></span></h1>
+    <q><span th:text="${quote}"></span></q>
+    <p><span th:text="${description}"></span></p>
+</div>
+<footer>
+    <p>&copy; 2025 Zaimond Lim. All rights reserved.</p>
+</footer>
+</body>
+</html>
