@@ -5,11 +5,43 @@
 </head>
 <body>
 <h1>Available Coffees</h1>
-<ul>
-    <li th:each="coffee : ${coffees}">
-        <span th:text="${coffee.name}"></span>
-        <a th:href="@{/delete(id=${coffee.id})}">Delete</a>
-    </li>
-</ul>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Coffee Name</th>
+        <th>Coffee Type</th>
+        <th>Coffee Size</th>
+        <th>Coffee Price</th>
+        <th>Coffee Roast</th>
+        <th>Coffee Origin</th>
+        <th>Decaffeinated</th>
+        <th>Stock</th>
+        <th>Flavor Notes</th>
+        <th>Brew Method</th>
+
+    </tr>
+    <tr th:each="coffee : ${coffees}">
+        <td th:text="${coffee.id}"></td>
+        <td th:text="${coffee.name}"></td>
+        <td th:text="${coffee.type}"></td>
+        <td th:text="${coffee.size}"></td>
+        <td th:text="${coffee.price}"></td>
+        <td th:text="${coffee.roastLevel}"></td>
+        <td th:text="${coffee.origin}"></td>
+        <td th:text="${coffee.isDecaf}"></td>
+        <td th:text="${coffee.stock}"></td>
+        <td th:text="${coffee.flavorNotes}"></td>
+        <td th:text="${coffee.brewMethod}"></td>
+        <td>
+            <a th:href="@{/edit(id=${coffee.id})}">Edit</a>
+            <a th:href="@{/delete(id=${coffee.id})}">Delete</a>
+        </td>
+
+    </tr>
+</table>
+<a href="/add">Add New Coffee</a>
+
+
+
 </body>
 </html>

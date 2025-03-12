@@ -3,6 +3,7 @@ package com.limmon.CoffeeKo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
@@ -25,6 +26,49 @@ public class HomeController {
     public String getCoffees(Model model) {
         model.addAttribute("coffees", coffeeList);
         return "index";
+    }
+
+    @GetMapping("/add")
+    public String addCoffeeForm() {
+        return "new";
+    }
+
+    @PostMapping("/save")
+    public String saveCoffee(@RequestParam String name, @RequestParam String type, @RequestParam String size, @RequestParam double price, @RequestParam String roastLevel, @RequestParam String origin, @RequestParam boolean isDecaf, @RequestParam int stock, @RequestParam List<String> flavorNotes, @RequestParam String brewMethod) {
+        int newId = coffeeList.get(coffeeList.size() - 1).getId() + 1;
+        coffeeList.add(new Coffee(newId, name, type, size, price, roastLevel, origin, isDecaf, stock, flavorNotes, brewMethod));
+        return "redirect:/";
+    }
+
+    @GetMapping("/edit")
+    public String editCoffee(@RequestParam int id, Model model) {
+        for (Coffee coffee : coffeeList) {
+            if (coffee.getId() == id) {
+                model.addAttribute("coffee", coffee);
+                return "edit";
+            }
+        }
+        return "redirect:/";
+    }
+
+    @PostMapping("/update")
+    public String updateCoffee(@RequestParam int id, @RequestParam String name, @RequestParam String type, @RequestParam String size, @RequestParam double price, @RequestParam String roastLevel, @RequestParam String origin, @RequestParam boolean isDecaf, @RequestParam int stock, @RequestParam List<String> flavorNotes, @RequestParam String brewMethod) {
+        for (Coffee coffee : coffeeList) {
+            if (coffee.getId() == id) {
+                coffee.setName(name);
+                coffee.setType(type);
+                coffee.setSize(size);
+                coffee.setPrice(price);
+                coffee.setRoastLevel(roastLevel);
+                coffee.setOrigin(origin);
+                coffee.setDecaf(isDecaf);
+                coffee.setStock(stock);
+                coffee.setFlavorNotes(flavorNotes);
+                coffee.setBrewMethod(brewMethod);
+                break;
+            }
+        }
+        return "redirect:/";
     }
 
     @GetMapping("/delete")
