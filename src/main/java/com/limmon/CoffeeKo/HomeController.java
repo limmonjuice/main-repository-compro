@@ -10,10 +10,17 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+
+/**
+ * Controller class for managing coffee data.
+ */
 @Controller
 public class HomeController {
     private List<Coffee> coffeeList = new ArrayList<>();
 
+    /**
+     * Initializes the coffee list with sample data.
+     */
     public HomeController() {
         coffeeList.add(new Coffee(1, "Espresso", "Arabica", "Small", 3.50, "Dark", "Ethiopia", false, 10, Arrays.asList("Chocolate", "Nutty"), "Espresso"));
         coffeeList.add(new Coffee(2, "Latte", "Arabica", "Medium", 4.50, "Medium", "Brazil", false, 8, Arrays.asList("Creamy", "Sweet"), "Drip"));
@@ -22,24 +29,36 @@ public class HomeController {
         coffeeList.add(new Coffee(5, "Americano", "Robusta", "Large", 3.25, "Light", "Kenya", false, 15, Arrays.asList("Citrus", "Balanced"), "Drip"));
     }
 
+    /**
+     * Displays the list of coffees.
+     */
     @GetMapping("/")
     public String getCoffees(Model model) {
         model.addAttribute("coffees", coffeeList);
         return "index";
     }
 
+    /**
+     * Shows the form to add a new coffee.
+     */
     @GetMapping("/add")
     public String addCoffeeForm() {
         return "new";
     }
 
+    /**
+     * Saves a new coffee entry.
+     */
     @PostMapping("/save")
-    public String saveCoffee(@RequestParam String name, @RequestParam String type, @RequestParam String size, @RequestParam double price, @RequestParam String roastLevel, @RequestParam String origin, @RequestParam boolean isDecaf, @RequestParam int stock, @RequestParam List<String> flavorNotes, @RequestParam String brewMethod) {
+    public String saveCoffee(@RequestParam String name, @RequestParam String type, @RequestParam String size, @RequestParam double price, @RequestParam String roastLevel, @RequestParam String origin, @RequestParam(defaultValue="false") boolean isDecaf, @RequestParam int stock, @RequestParam List<String> flavorNotes, @RequestParam String brewMethod) {
         int newId = coffeeList.get(coffeeList.size() - 1).getId() + 1;
         coffeeList.add(new Coffee(newId, name, type, size, price, roastLevel, origin, isDecaf, stock, flavorNotes, brewMethod));
         return "redirect:/";
     }
 
+    /**
+     * Displays the edit form for a specific coffee.
+     */
     @GetMapping("/edit")
     public String editCoffee(@RequestParam int id, Model model) {
         for (Coffee coffee : coffeeList) {
@@ -51,8 +70,21 @@ public class HomeController {
         return "redirect:/";
     }
 
+    /**
+     * Updates an existing coffee entry.
+     */
     @PostMapping("/update")
-    public String updateCoffee(@RequestParam int id, @RequestParam String name, @RequestParam String type, @RequestParam String size, @RequestParam double price, @RequestParam String roastLevel, @RequestParam String origin, @RequestParam boolean isDecaf, @RequestParam int stock, @RequestParam List<String> flavorNotes, @RequestParam String brewMethod) {
+    public String updateCoffee(@RequestParam int id,
+                               @RequestParam String name,
+                               @RequestParam String type,
+                               @RequestParam String size,
+                               @RequestParam double price,
+                               @RequestParam String roastLevel,
+                               @RequestParam String origin,
+                               @RequestParam(defaultValue="false") boolean isDecaf,
+                               @RequestParam int stock,
+                               @RequestParam String flavorNotes,
+                               @RequestParam String brewMethod) {
         for (Coffee coffee : coffeeList) {
             if (coffee.getId() == id) {
                 coffee.setName(name);
@@ -63,7 +95,7 @@ public class HomeController {
                 coffee.setOrigin(origin);
                 coffee.setDecaf(isDecaf);
                 coffee.setStock(stock);
-                coffee.setFlavorNotes(flavorNotes);
+                coffee.setFlavorNotes(Arrays.asList(flavorNotes.split(",")));
                 coffee.setBrewMethod(brewMethod);
                 break;
             }
@@ -71,6 +103,9 @@ public class HomeController {
         return "redirect:/";
     }
 
+    /**
+     * Deletes a coffee entry.
+     */
     @GetMapping("/delete")
     public String deleteCoffee(@RequestParam int id) {
         coffeeList.removeIf(coffee -> coffee.getId() == id);
