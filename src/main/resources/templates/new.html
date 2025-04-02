@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Coffee - Midterm Coffee</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4e7d1;
+            color: #5c4033;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .form-container {
+            background: white;
+            padding: 20px;
+            width: 90%;
+            max-width: 500px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            border: 2px solid #795548;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 15px;
+            color: #4e342e;
+        }
+
+        label {
+            display: block;
+            margin: 8px 0 3px;
+            font-weight: bold;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #8d6e63;
+            border-radius: 5px;
+            background-color: #fffaf3;
+            color: #4e342e;
+        }
+
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .checkbox-container input {
+            width: auto;
+        }
+
+        button {
+            background-color: #6d4c41;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #4e342e;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            text-decoration: none;
+            font-weight: bold;
+            color: #5d4037;
+        }
+
+        .back-link:hover {
+            color: #3e2723;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <h1>➕ Add New Coffee</h1>
+
+    <form action="/save" method="post">
+        <label>Name: <input type="text" name="name" required></label>
+        <label>Type: <input type="text" name="type" required></label>
+        <label>Size: <input type="text" name="size" required></label>
+        <label>Price: <input type="number" step="0.01" name="price" required></label>
+        <label>Roast Level: <input type="text" name="roastLevel" required></label>
+        <label>Origin: <input type="text" name="origin" required></label>
+
+        <div class="checkbox-container">
+            <input type="checkbox" id="isDecaf" name="isDecaf" value="true">
+            <label for="isDecaf">Decaf?</label>
+        </div>
+
+        <label>Stock: <input type="number" name="stock" required></label>
+
+        <label>Flavor Notes:</label>
+
+        <label>
+            <textarea name="flavorNotes" rows="2" placeholder="E.g., Chocolate, Fruity, Nutty" required></textarea>
+        </label>
+
+        <label>Brew Method: <input type="text" name="brewMethod" required></label>
+
+        <button type="submit">➕ Add Coffee</button>
+    </form>
+
+    <a href="/" class="back-link">⬅ Back to Coffee List</a>
+</div>
+
+</body>
+</html>
