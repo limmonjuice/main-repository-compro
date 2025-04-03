@@ -15,7 +15,6 @@ public class CoffeeController {
 
     private final CoffeeService coffeeService;
 
-    // ✅ Spring injects the service automatically
     public CoffeeController(CoffeeService coffeeService) {
         this.coffeeService = coffeeService;
     }
