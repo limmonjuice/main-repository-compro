@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee List</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background-color: #f4e7d1;
+            margin: 20px;
+            color: #5c4033;
+        }
+
+        h1 {
+            color: #4e342e;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            padding: 8px;
+            width: 250px;
+            border-radius: 5px;
+            border: 1px solid #8d6e63;
+            background-color: #f9f3ec;
+        }
+
+        button {
+            padding: 8px 12px;
+            background-color: #6d4c41;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: #4e342e;
+        }
+
+        table {
+            width: 100%;
+            max-width: 900px;
+            margin: auto;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        th, td {
+            border: 1px solid #d7ccc8;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #795548;
+            color: white;
+            font-size: 16px;
+        }
+
+        td {
+            background-color: #fffaf3;
+        }
+
+        td.actions {
+            white-space: nowrap;
+            vertical-align: middle;
+        }
+
+        .actions a {
+            display: inline-block;
+            padding: 6px 12px;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 5px;
+            text-decoration: none;
+            width: 80px;
+            text-align: center;
+            margin: 2px;
+        }
+
+        .edit {
+            background-color: #8d6e63;
+            color: white;
+        }
+
+        .edit:hover {
+            background-color: #6d4c41;
+        }
+
+
+        .delete {
+            background-color: #d84315;
+            color: white;
+        }
+
+        .delete:hover {
+            background-color: #bf360c;
+        }
+
+        .add-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 15px;
+            background-color: #5d4037;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .add-btn:hover {
+            background-color: #3e2723;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Coffees <3</h1>
+
+<form action="/search" method="get">
+    <label>
+        <input type="text" name="keyword" placeholder="Search coffee by name">
+    </label>
+    <button type="submit">Search</button>
+</form>
+
+<br>
+
+
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Size</th>
+        <th>Price</th>
+        <th>Roast</th>
+        <th>Origin</th>
+        <th>Decaf</th>
+        <th>Stock</th>
+        <th>Flavor Notes</th>
+        <th>Brew Method</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr th:each="coffee : ${coffees}">
+        <td th:text="${coffee.name}"></td>
+        <td th:text="${coffee.type}"></td>
+        <td th:text="${coffee.size}"></td>
+        <td th:text="${coffee.price}"></td>
+        <td th:text="${coffee.roastLevel}"></td>
+        <td th:text="${coffee.origin}"></td>
+        <td th:text="${coffee.isDecaf ? 'Yes' : 'No'}"></td>
+        <td th:text="${coffee.stock}"></td>
+        <td th:text="${coffee.flavorNotes}"></td>
+        <td th:text="${coffee.brewMethod}"></td>
+        <td class="actions">
+            <a th:href="@{/edit?id={id}(id=${coffee.id})}" class="edit">Edit</a>
+            <a th:href="@{/delete?id={id}(id=${coffee.id})}" class="delete">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<br>
+<a href="/add" class="add-btn">➕ Add a New Coffee</a>
+
+</body>
+</html>

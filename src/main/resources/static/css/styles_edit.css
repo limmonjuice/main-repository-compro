@@ -1,0 +1,128 @@
+/* Base Reset */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4e7d1;
+    color: #5c4033;
+}
+
+/* Container */
+.form-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #fffaf3;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Heading */
+h1 {
+    text-align: center;
+    color: #4e342e;
+    margin-bottom: 25px;
+}
+
+/* Labels and Inputs */
+form label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: #4e342e;
+}
+
+form input[type="text"],
+form input[type="number"],
+form select {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    border: 1px solid #8d6e63;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    background-color: #f9f3ec;
+    color: #4e342e;
+}
+
+input.error,
+select.error {
+    border-color: #d84315;
+    background-color: #fdecea;
+}
+
+/* Error messages */
+.error-message {
+    color: #d84315;
+    font-size: 13px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+
+/* Decaf checkbox styling */
+.decaf-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 15px;
+    font-family: inherit;
+    color: #4e342e;
+}
+
+.decaf-checkbox input[type="checkbox"] {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.decaf-checkbox label {
+    font-size: 14px;
+}
+
+/* Flavor Notes Group */
+.flavor-notes-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.flavor-notes-group div {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Buttons */
+button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #6d4c41;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #4e342e;
+}
+
+/* Back Link */
+.back-link {
+    display: inline-block;
+    margin-top: 20px;
+    text-align: center;
+    width: 100%;
+    text-decoration: none;
+    color: #6d4c41;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.back-link:hover {
+    color: #3e2723;
+}
