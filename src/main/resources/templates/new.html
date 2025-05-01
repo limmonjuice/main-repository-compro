@@ -13,7 +13,7 @@
 
     <form th:action="@{/save}" th:object="${coffee}" method="post">
         <label for="name">Name:</label>
-        <input type="text" id="name" th:field="*{name}" th:classappend="${#fields.hasErrors('name')} ? 'error' : ''" />
+        <input type="text" id="name" placeholder="Enter Name of Coffee" th:field="*{name}" th:classappend="${#fields.hasErrors('name')} ? 'error' : ''" />
         <div class="error-message" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
 
         <label for="type">Type:</label>
@@ -49,7 +49,7 @@
         <div class="error-message" th:if="${#fields.hasErrors('roastLevel')}" th:errors="*{roastLevel}"></div>
 
         <label for="origin">Origin:</label>
-        <input type="text" id="origin" th:field="*{origin}" th:classappend="${#fields.hasErrors('origin')} ? 'error' : ''" />
+        <input type="text" id="origin" placeholder="Enter origin of Coffee" th:field="*{origin}" th:classappend="${#fields.hasErrors('origin')} ? 'error' : ''" />
         <div class="error-message" th:if="${#fields.hasErrors('origin')}" th:errors="*{origin}"></div>
 
         <label>Make it Decaffeinated?</label>
@@ -65,40 +65,31 @@
         <label>Flavor Notes:</label>
         <div class="flavor-notes-group">
         <div>
-            <input type="checkbox" th:field="*{flavorNotes}" value="Chocolate">
-            <label>Chocolate</label>
+            <label><input type="checkbox" th:field="*{flavorNotes}" value="Chocolate">Chocolate</label>
         </div>
         <div>
-            <input type="checkbox" th:field="*{flavorNotes}" value="Nutty">
-            <label>Nutty</label>
+            <label><input type="checkbox" th:field="*{flavorNotes}" value="Nutty">Nutty</label>
         </div>
         <div>
-            <input type="checkbox" th:field="*{flavorNotes}" value="Fruity">
-            <label>Fruity</label>
+            <label><input type="checkbox" th:field="*{flavorNotes}" value="Fruity">Fruity</label>
         </div>
         <div>
-            <input type="checkbox" th:field="*{flavorNotes}" value="Citrus">
-            <label>Citrus</label>
+            <label><input type="checkbox" th:field="*{flavorNotes}" value="Citrus">Citrus</label>
         </div>
         <div>
-            <input type="checkbox" th:field="*{flavorNotes}" value="Sweet">
-            <label>Sweet</label>
+            <label><input type="checkbox" th:field="*{flavorNotes}" value="Sweet">Sweet</label>
         </div>
         <div>
-            <input type="checkbox" th:field="*{flavorNotes}" value="Smooth">
-            <label>Smooth</label>
+            <label><input type="checkbox" th:field="*{flavorNotes}" value="Smooth">Smooth</label>
         </div>
         <div>
-            <input type="checkbox" th:field="*{flavorNotes}" value="Bold">
-            <label>Bold</label>
+            <label><input type="checkbox" th:field="*{flavorNotes}" value="Bold">Bold</label>
         </div>
         <div>
-            <input type="checkbox" th:field="*{flavorNotes}" value="Creamy">
-            <label>Creamy</label>
+            <label><input type="checkbox" th:field="*{flavorNotes}" value="Creamy">Creamy</label>
         </div>
         <div>
-            <input type="checkbox" th:field="*{flavorNotes}" value="Earthy">
-            <label>Earthy</label>
+            <label><input type="checkbox" th:field="*{flavorNotes}" value="Earthy">Earthy</label>
         </div>
         </div>
 

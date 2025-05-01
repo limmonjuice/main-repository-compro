@@ -1,35 +1,48 @@
-/* Base Reset */
+:root {
+    --font-family: 'Arial', sans-serif;
+    --main-bg: #f4e7d1;
+    --text-color: #5c4033;
+    --card-bg: #fffaf3;
+    --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    --heading-color: #4e342e;
+    --border-color: #8d6e63;
+    --input-bg: #f9f3ec;
+    --error-color: #d84315;
+    --error-bg: #fdecea;
+    --button-bg: #6d4c41;
+    --button-hover: #4e342e;
+    --link-color: #6d4c41;
+    --link-hover: #3e2723;
+}
+
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Arial', sans-serif;
-    background-color: #f4e7d1;
-    color: #5c4033;
+    font-family: var(--font-family);
+    background-color: var(--main-bg);
+    color: var(--text-color);
 }
 
-/* Container */
 .form-container {
     max-width: 600px;
     margin: 40px auto;
     padding: 30px;
-    background-color: #fffaf3;
+    background-color: var(--card-bg);
     border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--card-shadow);
 }
 
-/* Heading */
 h1 {
     text-align: center;
-    color: #4e342e;
+    color: var(--heading-color);
     margin-bottom: 25px;
 }
 
-/* Labels and Inputs */
 form label {
     display: block;
     margin-bottom: 6px;
     font-weight: bold;
-    color: #4e342e;
+    color: var(--heading-color);
 }
 
 form input[type="text"],
@@ -38,39 +51,37 @@ form select {
     width: 100%;
     box-sizing: border-box;
     padding: 10px;
-    border: 1px solid #8d6e63;
+    border: 1px solid var(--border-color);
     border-radius: 5px;
     margin-bottom: 15px;
-    background-color: #f9f3ec;
-    color: #4e342e;
+    background-color: var(--input-bg);
+    color: var(--heading-color);
 }
 
-input.error,
+input[type="text"].error,
+input[type="number"].error,
 select.error {
-    border-color: #d84315;
-    background-color: #fdecea;
+    border-color: var(--error-color);
+    background-color: var(--error-bg);
 }
 
-/* Error messages */
 .error-message {
-    color: #d84315;
+    color: var(--error-color);
     font-size: 13px;
     margin-top: -10px;
     margin-bottom: 10px;
 }
 
-/* Decaf checkbox styling */
 .decaf-checkbox {
     display: flex;
     align-items: center;
     gap: 8px;
     margin-bottom: 15px;
     font-family: inherit;
-    color: #4e342e;
+    color: var(--heading-color);
 }
 
 .decaf-checkbox input[type="checkbox"] {
-    transform: scale(1.2);
     cursor: pointer;
 }
 
@@ -78,7 +89,6 @@ select.error {
     font-size: 14px;
 }
 
-/* Flavor Notes Group */
 .flavor-notes-group {
     display: flex;
     flex-wrap: wrap;
@@ -92,11 +102,10 @@ select.error {
     gap: 5px;
 }
 
-/* Buttons */
 button[type="submit"] {
     width: 100%;
     padding: 12px;
-    background-color: #6d4c41;
+    background-color: var(--button-bg);
     color: white;
     border: none;
     border-radius: 6px;
@@ -104,25 +113,22 @@ button[type="submit"] {
     font-weight: bold;
     cursor: pointer;
     margin-top: 20px;
-    transition: background-color 0.3s ease;
 }
 
 button[type="submit"]:hover {
-    background-color: #4e342e;
+    background-color: var(--button-hover);
 }
 
-/* Back Link */
 .back-link {
     display: inline-block;
     margin-top: 20px;
     text-align: center;
     width: 100%;
     text-decoration: none;
-    color: #6d4c41;
+    color: var(--link-color);
     font-weight: bold;
-    transition: color 0.3s ease;
 }
 
 .back-link:hover {
-    color: #3e2723;
+    color: var(--link-hover);
 }

@@ -1,6 +1,2 @@
-1,Espresso,Arabica,Small,3.5,Dark,Ethiopia,false,10,"Chocolate, Nutty",Espresso
-2,Latte,Arabica,Medium,4.5,Medium,Brazil,false,8,"Creamy, Sweet",Drip
-3,Cappuccino,Robusta,Large,5.0,Medium,Colombia,false,12,"Fruity, Bold",French Press
-4,Mocha,Arabica,Medium,4.75,Dark,Guatemala,false,6,"Chocolate, Smooth",Espresso
-5,Americano,Robusta,Large,3.25,Light,Kenya,false,15,"",Espresso
-6,asd,Arabica,Small,2.0,Light,Philippines,true,4,"Chocolate, Nutty, Fruity, Citrus, Sweet, Smooth, Bold, Creamy",Cold Brew
+3,Cappuccino,Robusta,Large,80.0,Medium,Colombia,false,12,"Chocolate, Nutty, Fruity",Espresso
+4,Barako,Arabica,Medium,98.0,Dark,Philippines,false,9,"Chocolate, Nutty, Creamy, Earthy",Drip

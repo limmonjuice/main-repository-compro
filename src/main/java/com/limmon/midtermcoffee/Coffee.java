@@ -25,12 +25,12 @@ public class Coffee {
     @NotBlank(message = "Roast Level of Coffee is required")
     private String roastLevel;
 
-    @NotBlank(message = "Origin of Coffee is required")
+    @Size(max= 100, message= "Enter only less than 100 characters")
     private String origin;
 
     private boolean isDecaf;
 
-    @Min(value = 1, message = "Stock of Coffee must be at least 1")
+    @Min(value = 0, message = "Stock of Coffee must at least be 0")
     private int stock;
 
     @NotEmpty(message = "At least one flavor note must be selected")

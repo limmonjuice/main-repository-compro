@@ -4,9 +4,13 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
-
+/**
+ * Service class for managing coffee data including loading, saving,
+ * searching, and updating coffee records stored in a CSV file.
+ */
 @Service
 public class CoffeeService {
     private List<Coffee> coffeeList;
@@ -46,7 +50,6 @@ public class CoffeeService {
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             String line;
             while ((line = br.readLine()) != null) {
-                // Use regex to correctly split data even if some values are quoted
                 String[] data = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
 
                 Coffee coffee = new Coffee();
@@ -128,43 +131,22 @@ public class CoffeeService {
     }
 
     public List<Coffee> searchCoffeesByName(String keyword) {
-        List<Coffee> result = new ArrayList<>();
-
         if (keyword == null || keyword.trim().isEmpty()) {
             return coffeeList;
         }
-
-        String lowerKeyword = keyword.toLowerCase();
-
-        for (Coffee coffee : coffeeList) {
-            if (String.valueOf(coffee.getId()).equals(keyword)) {
-                result.add(coffee);
-            } else if (coffee.getName().toLowerCase().contains(lowerKeyword)) {
-                result.add(coffee);
-            } else if (coffee.getType().toLowerCase().contains(lowerKeyword)) {
-                result.add(coffee);
-            } else if (coffee.getSize().toLowerCase().contains(lowerKeyword)) {
-                result.add(coffee);
-            } else if (coffee.getOrigin().toLowerCase().contains(lowerKeyword)) {
-                result.add(coffee);
-            } else if (coffee.getRoastLevel().toLowerCase().contains(lowerKeyword)) {
-                result.add(coffee);
-            } else if (coffee.getBrewMethod().toLowerCase().contains(lowerKeyword)) {
-                result.add(coffee);
-            } else if (String.valueOf(coffee.getPrice()).contains(keyword)) {
-                result.add(coffee);
-            } else if (String.valueOf(coffee.getStock()).contains(keyword)) {
-                result.add(coffee);
-            } else if (String.join(" ", coffee.getFlavorNotes()).toLowerCase().contains(lowerKeyword)) {
-                result.add(coffee);
-            } else if ((lowerKeyword.equals("true") || lowerKeyword.equals("decaf") || lowerKeyword.equals("yes")) && coffee.isDecaf()) {
-                result.add(coffee);
-            } else if ((lowerKeyword.equals("false") || lowerKeyword.equals("regular") || lowerKeyword.equals("no")) && !coffee.isDecaf()) {
-                result.add(coffee);
-            }
-        }
-
-        return result;
+        return coffeeList.stream()
+                .filter(coffee -> String.valueOf(coffee.getId()).equals(keyword)
+                        || coffee.getName().toLowerCase().contains(keyword.toLowerCase())
+                        || coffee.getType().toLowerCase().contains(keyword.toLowerCase())
+                        || coffee.getSize().toLowerCase().contains(keyword.toLowerCase())
+                        || coffee.getOrigin().toLowerCase().contains(keyword.toLowerCase())
+                        || coffee.getRoastLevel().toLowerCase().contains(keyword.toLowerCase())
+                        || coffee.getBrewMethod().toLowerCase().contains(keyword.toLowerCase())
+                        || String.join(" ", coffee.getFlavorNotes()).toLowerCase().contains(keyword.toLowerCase())
+                        || String.valueOf(coffee.getPrice()).contains(keyword)
+                        || (List.of("true", "decaf", "yes").contains(keyword.toLowerCase()) && coffee.isDecaf())
+                        || (List.of("false", "regular", "no").contains(keyword.toLowerCase()) && !coffee.isDecaf()))
+                .collect(Collectors.toList());
     }
 
 }
