@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link rel="stylesheet" th:href="@{/css/styles_login.css}">
+</head>
+<body>
+
+<div class="wave wave-top">
+  <div class="wave-inner">
+    <svg viewBox="0 0 1200 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,60 C300,0 900,120 1200,60 L1200,120 L0,120 Z" fill="#74A662"></path>
+    </svg>
+    <svg viewBox="0 0 1200 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,60 C300,0 900,120 1200,60 L1200,120 L0,120 Z" fill="#74A662"></path>
+    </svg>
+  </div>
+</div>
+
+
+
+<div class="wave wave-bottom">
+  <div class="wave-inner">
+    <svg viewBox="0 0 1200 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,60 C300,0 900,120 1200,60 L1200,120 L0,120 Z" fill="#d4b59e"/>
+    </svg>
+    <svg viewBox="0 0 1200 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,60 C300,0 900,120 1200,60 L1200,120 L0,120 Z" fill="#d4b59e"/>
+    </svg>
+  </div>
+</div>
+
+<div class="left-side">
+  <img th:src="@{/images/cafe-illustration.png}" alt="Coffee Shop Illustration">
+  <h1>Na-Brew Zone</h1>
+  <p>Enjoy a warm cup of coffee while connecting with your friends.</p>
+</div>
+
+<div class="right-side">
+  <form action="/login" method="POST" th:object="${user}">
+    <h1>Login</h1>
+    <p class="auth-error" th:if="${error}" th:text="${error}"></p>
+
+    <div>
+      <label for="username">User Name:</label>
+      <input type="text"
+             th:field="*{username}"
+             id="username"
+             th:classappend="${#fields.hasErrors('username')} ? 'input-error' : ''">
+      <p class="error" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
+    </div>
+
+    <div>
+      <label for="password">Password:</label>
+      <input type="password"
+             th:field="*{password}"
+             id="password"
+             th:classappend="${#fields.hasErrors('password')} ? 'input-error' : ''">
+      <p class="error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+    </div>
+
+    <input type="submit" value="Login">
+  </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:fragment="html(title, link, content)">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title th:replace="${title}">Default</title>
+    <th:block th:replace="${link}"></th:block>
+    <link rel="stylesheet" th:href="@{/css/styles_master.css}">
+</head>
+<body>
+<aside>
+    <div class="top">
+        <div class="brand">
+            <img th:src="@{/images/logo.jpg}" alt="logo" />
+            <span>Company ABC</span>
+        </div>
+        <div class="menu">
+            <ul>
+                <!-- Dashboard -->
+                <li th:replace="~{components/menu_item :: menuItem('/', 'Home', '/images/home_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png', 'home', ${activeMenu})}"></li>
+
+                <!-- Product -->
+                <li th:replace="~{components/menu_item :: menuItem('/menu', 'Menu', '/images/package_2_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png', 'menu', ${activeMenu})}"></li>
+
+                <!-- Customers -->
+                <li th:replace="~{components/menu_item :: menuItem('/add', 'Add Coffee', '/images/coffee_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png', 'add', ${activeMenu})}"></li>
+
+                <!-- Income -->
+                <li th:replace="~{components/menu_item :: menuItem('/login', 'Log Out', '/images/logout_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png', 'logout', ${activeMenu})}"></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="user-profile">
+        <img src="" alt="" />
+        <div>
+            <h1>Evano</h1>
+            <span>Project Manager</span>
+        </div>
+    </div>
+</aside>
+
+<main>
+    <div th:replace="${content}"></div>
+</main>
+</body>
+</html>

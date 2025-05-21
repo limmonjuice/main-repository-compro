@@ -1,4 +1,4 @@
-package com.limmon.midtermcoffee;
+package com.limmon.midtermcoffee.models;
 
 import jakarta.validation.constraints.*;
 
@@ -39,6 +39,8 @@ public class Coffee {
     @NotBlank(message = "Brew Method of Coffee is required")
     private String brewMethod;
 
+    private String coffeePicture;
+
     public Coffee() {}
 
     /**
@@ -57,7 +59,7 @@ public class Coffee {
      * @param brewMethod Preferred brewing method for this coffee.
      */
 
-    public Coffee(int id, String name, String type, String size, double price, String roastLevel, String origin, boolean isDecaf, int stock, List<String> flavorNotes, String brewMethod) {
+    public Coffee(int id, String name, String type, String size, double price, String roastLevel, String origin, boolean isDecaf, int stock, List<String> flavorNotes, String brewMethod, String coffeePicture) {
         this.id = id;
         this.name = name;
         this.type = type;
@@ -69,6 +71,7 @@ public class Coffee {
         this.stock = stock;
         this.flavorNotes = flavorNotes;
         this.brewMethod = brewMethod;
+        this.coffeePicture = coffeePicture;
     }
 
     /** @return The unique identifier of the coffee. */
@@ -114,4 +117,7 @@ public class Coffee {
     /** @return The preferred brewing method for this coffee. */
     public String getBrewMethod() { return brewMethod; }
     public void setBrewMethod(String brewMethod) { this.brewMethod = brewMethod; }
+
+    public String getCoffeePicture() { return coffeePicture; }
+    public void setCoffeePicture(String coffeePicture) { this.coffeePicture = coffeePicture; }
 }

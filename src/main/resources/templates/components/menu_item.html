@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+<th:block th:fragment="menuItem(url, label, iconPath, menuKey, activeMenu)">
+    <li>
+        <a th:href="@{${url}}"
+           class="menu-item"
+           th:classappend="${activeMenu == menuKey ? ' active' : ''}">
+            <div class="menu-label">
+                <img th:src="@{${iconPath}}" th:alt="${label + ' icon'}" />
+                <span th:text="${label}">Label</span>
+            </div>
+            <span class="arrow">›</span>
+        </a>
+    </li>
+</th:block>
+</body>
+</html>

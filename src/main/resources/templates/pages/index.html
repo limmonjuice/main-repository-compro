@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layouts/master :: html(
+        title=~{::title},
+        link=~{::link},
+        content=~{::section})}">
+<head>
+    <title>Coffee List</title>
+    <link rel="stylesheet" th:href="@{/css/styles_index.css}" />
+</head>
+
+<section class="content-wrapper">
+    <h1>Coffees ❤️</h1>
+
+    <form action="/search" method="get">
+        <label>
+            <input type="text" name="keyword" placeholder="Search coffee by name" />
+        </label>
+        <button type="submit">Search</button>
+    </form>
+
+    <br>
+    <div class="table-container">
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Size</th>
+                    <th>Price</th>
+                    <th>Roast</th>
+                    <th>Origin</th>
+                    <th>Decaf</th>
+                    <th>Stock</th>
+                    <th>Flavor Notes</th>
+                    <th>Brew Method</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="coffee : ${coffees}">
+                    <td th:text="${coffee.id}"></td>
+                    <td th:text="${coffee.name}"></td>
+                    <td th:text="${coffee.type}"></td>
+                    <td th:text="${coffee.size}"></td>
+                    <td th:text="'₱' + ${coffee.price}"></td>
+                    <td th:text="${coffee.roastLevel}"></td>
+                    <td th:text="${coffee.origin}"></td>
+                    <td th:text="${coffee.isDecaf ? 'Yes' : 'No'}"></td>
+                    <td th:text="${coffee.stock}"></td>
+                    <td th:text="${#strings.listJoin(coffee.flavorNotes, ', ')}"></td>
+                    <td th:text="${coffee.brewMethod}"></td>
+                    <td class="actions-cell">
+                        <div class="actions">
+                            <a th:href="@{/edit(id=${coffee.id})}" class="edit">Edit</a>
+                            <a th:href="@{/delete(id=${coffee.id})}" class="delete" onclick="return confirm('Are you sure?');">Delete</a>
+                            <a th:href="@{/coffee/{id}(id=${coffee.id})}" class="view">View</a>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <br>
+</section>
+
+</html>

@@ -1,135 +1,201 @@
-:root {
-    --font-family: 'Arial', sans-serif;
-    --text-color: #5c4033;
-    --heading-color: #4e342e;
-    --background-main: #f4e7d1;
-    --input-bg: #f9f3ec;
-    --input-border: #8d6e63;
-    --button-bg: #6d4c41;
-    --button-hover: #4e342e;
-    --table-border: #d7ccc8;
-    --table-bg: #fffaf3;
-    --table-header-bg: #795548;
-    --action-edit-bg: #8d6e63;
-    --action-edit-hover: #6d4c41;
-    --action-delete-bg: #d84315;
-    --action-delete-hover: #bf360c;
-    --add-btn-bg: #5d4037;
-    --add-btn-hover: #3e2723;
-    --text-white: white;
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Work+Sans:wght@400;600&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-body {
-    font-family: var(--font-family);
-    text-align: center;
-    background-color: var(--background-main);
-    margin: 20px;
-    color: var(--text-color);
+/* ==== Main Layout Compatibility ==== */
+main {
+    overflow-x: hidden; /* Allow scrolling inside main */
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    font-family: 'Work Sans', sans-serif;
+    background-color: #f9e7df;
+    color: #4d3b2f;
+    min-width: 300px;
+}
+
+.content-wrapper {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
 }
 
 h1 {
-    color: var(--heading-color);
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: #4d3b2f;
 }
 
 form {
-    margin-bottom: 20px;
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
 }
 
-input[type="text"] {
-    padding: 8px;
-    width: 250px;
-    border-radius: 5px;
-    border: 1px solid var(--input-border);
-    background-color: var(--input-bg);
+form label {
+    flex-grow: 1;
 }
 
-button {
-    padding: 8px 12px;
-    background-color: var(--button-bg);
-    color: var(--text-white);
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-button:hover {
-    background-color: var(--button-hover);
-}
-
-table {
+form input[type="text"] {
     width: 100%;
-    max-width: 900px;
-    margin: auto;
-    border-collapse: collapse;
-    background: var(--text-white);
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #c0a98f;
     border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #fffaf5;
+    font-size: 1rem;
+    color: #4d3b2f;
+}
+
+form button {
+    padding: 0.5rem 1rem;
+    background-color: #4d3b2f;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+form button:hover {
+    background-color: #725b4c;
+}
+
+.table-container {
+    overflow-x: auto; /* enable both horizontal and vertical scroll */
+    border: 1px solid #c0a98f;
+    border-radius: 12px;
+    background-color: #fffaf5;
+    padding: 1rem;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+/* Make the table wider than its container */
+table {
+    width: auto; /* let it size itself */
+    min-width: 1200px; /* adjust this to your desired min width */
+    border-collapse: collapse;
+    border-spacing: 0 12px;
+    font-size: 1.1rem; /* slightly bigger text */
+    color: #4d3b2f;
+}
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+thead tr {
+    background-color: #4d3b2f;
+    color: #e3d8ce;
 }
 
 th, td {
-    border: 1px solid var(--table-border);
-    padding: 10px;
+    padding: 0.75rem 1rem;
     text-align: center;
+    border: 1px solid #c0a98f;
 }
 
-th {
-    background-color: var(--table-header-bg);
-    color: var(--text-white);
-    font-size: 16px;
+td.actions-cell {
+    height: 100%;
+    vertical-align: middle; /* or middle, depending on design */
+    padding: 0.75rem 1rem;
 }
 
-td {
-    background-color: var(--table-bg);
+tbody tr:hover {
+    background-color: #f1e5dc;
 }
 
-td.actions {
-    white-space: nowrap;
-    vertical-align: middle;
+.actions {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* or center/start */
+    align-items: stretch;
+    height: 100%;
+    gap: 0.5rem;
 }
 
 .actions a {
-    display: inline-block;
-    padding: 6px 12px;
-    font-size: 14px;
-    font-weight: bold;
-    border-radius: 5px;
+    flex: 1; /* Let buttons stretch if needed */
     text-decoration: none;
-    width: 80px;
+    font-weight: 600;
+    color: #4d3b2f;
+    border-radius: 5px;
+    padding: 0.4rem 0.6rem;
+    border: 1px solid transparent;
+    transition: all 0.3s;
     text-align: center;
-    margin: 2px;
 }
 
-.edit {
-    background-color: var(--action-edit-bg);
-    color: var(--text-white);
+.actions a.edit {
+    border-color: #725b4c;
 }
 
-.edit:hover {
-    background-color: var(--action-edit-hover);
+.actions a.edit:hover {
+    background-color: #725b4c;
+    color: #fff;
 }
 
-.delete {
-    background-color: var(--action-delete-bg);
-    color: var(--text-white);
+.actions a.delete {
+    border-color: #c0392b;
 }
 
-.delete:hover {
-    background-color: var(--action-delete-hover);
+.actions a.delete:hover {
+    background-color: #c0392b;
+    color: #fff;
+}
+
+.actions a.view {
+    border-color: #5f4c42;
+}
+
+.actions a.view:hover {
+    background-color: #5f4c42;
+    color: #fff;
 }
 
 .add-btn {
     display: inline-block;
-    margin-top: 15px;
-    padding: 10px 15px;
-    background-color: var(--add-btn-bg);
-    color: var(--text-white);
-    border-radius: 5px;
+    margin-top: 1rem;
+    background-color: #4d3b2f;
+    color: #fff;
+    padding: 0.6rem 1.25rem;
+    border-radius: 12px;
+    font-weight: 600;
     text-decoration: none;
-    font-weight: bold;
+    transition: background-color 0.3s;
 }
 
 .add-btn:hover {
-    background-color: var(--add-btn-hover);
+    background-color: #725b4c;
+}
+
+/* Scrollbar styling */
+.table-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.table-container::-webkit-scrollbar-track {
+    background: #fffaf5;
+    border-radius: 12px;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+    background-color: #c0a98f;
+    border-radius: 12px;
+}
+
+.table-container::-webkit-scrollbar-thumb:hover {
+    background-color: #a48872;
 }

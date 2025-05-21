@@ -1,4 +1,4 @@
-package com.limmon.midtermcoffee;
+package com.limmon.midtermcoffee.services;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.limmon.midtermcoffee.models.Coffee;
 import org.springframework.stereotype.Service;
 /**
  * Service class for managing coffee data including loading, saving,
@@ -30,15 +31,15 @@ public class CoffeeService {
 
     private void addSampleData() {
         coffeeList.add(new Coffee(1, "Espresso", "Arabica", "Small", 3.50, "Dark", "Ethiopia", false, 10,
-                Arrays.asList("Chocolate", "Nutty"), "Espresso"));
+                Arrays.asList("Chocolate", "Nutty"), "Espresso", "50c9d4cb-67e0-4a18-9c6b-4a5785b8eda7.jpg"));
         coffeeList.add(new Coffee(2, "Latte", "Arabica", "Medium", 4.50, "Medium", "Brazil", false, 8,
-                Arrays.asList("Creamy", "Sweet"), "Drip"));
+                Arrays.asList("Creamy", "Sweet"), "Drip", "50c9d4cb-67e0-4a18-9c6b-4a5785b8eda7.jpg"));
         coffeeList.add(new Coffee(3, "Cappuccino", "Robusta", "Large", 5.00, "Medium", "Colombia", false, 12,
-                Arrays.asList("Fruity", "Bold"), "French Press"));
+                Arrays.asList("Fruity", "Bold"), "French Press", "50c9d4cb-67e0-4a18-9c6b-4a5785b8eda7.jpg"));
         coffeeList.add(new Coffee(4, "Mocha", "Arabica", "Medium", 4.75, "Dark", "Guatemala", false, 6,
-                Arrays.asList("Chocolate", "Smooth"), "Espresso"));
+                Arrays.asList("Chocolate", "Smooth"), "Espresso", "50c9d4cb-67e0-4a18-9c6b-4a5785b8eda7.jpg"));
         coffeeList.add(new Coffee(5, "Americano", "Robusta", "Large", 3.25, "Light", "Kenya", false, 15,
-                Arrays.asList("Citrus", "Balanced"), "Drip"));
+                Arrays.asList("Citrus", "Balanced"), "Drip", "50c9d4cb-67e0-4a18-9c6b-4a5785b8eda7.jpg"));
     }
 
 
@@ -64,6 +65,7 @@ public class CoffeeService {
                 coffee.setStock(Integer.parseInt(data[8]));
                 coffee.setFlavorNotes(Arrays.asList(data[9].replace("\"", "").split("\\s*,\\s*")));
                 coffee.setBrewMethod(data[10].replace("\"", ""));
+                coffee.setCoffeePicture(data[11]);
 
                 coffeeList.add(coffee);
 
@@ -88,7 +90,8 @@ public class CoffeeService {
                         coffee.isDecaf() + "," +
                         coffee.getStock() + "," +
                         "\"" + String.join(", ", coffee.getFlavorNotes()) + "\"" + "," +
-                        coffee.getBrewMethod());
+                        coffee.getBrewMethod() + "," +
+                        coffee.getCoffeePicture());
                 bw.newLine();
             }
         } catch (IOException e) {
@@ -112,6 +115,10 @@ public class CoffeeService {
 
 
     public void addCoffee(Coffee coffee) {
+        coffee.setId(coffeeList.size() + 1);  // Assign next sequential ID
+
+        System.out.println("Saving coffee: " + coffee.getName() + " with image: " + coffee.getCoffeePicture());
+
         coffeeList.add(coffee);
         saveCoffeeData();
     }
@@ -127,6 +134,12 @@ public class CoffeeService {
 
     public void deleteCoffeeById(int id) {
         coffeeList.removeIf(coffee -> coffee.getId() == id);
+
+        // Reassign IDs starting from 1 to maintain sequence without gaps
+        for (int i = 0; i < coffeeList.size(); i++) {
+            coffeeList.get(i).setId(i + 1);
+        }
+
         saveCoffeeData();
     }
 

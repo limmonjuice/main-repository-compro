@@ -1,2 +1,7 @@
-3,Cappuccino,Robusta,Large,80.0,Medium,Colombia,false,12,"Chocolate, Nutty, Fruity",Espresso
-4,Barako,Arabica,Medium,98.0,Dark,Philippines,false,9,"Chocolate, Nutty, Creamy, Earthy",Drip
+1,Latte,Arabica,Medium,4.5,Medium,Brazil,false,8,"Nutty, Fruity, Sweet, Creamy",Drip,null
+2,Cappuccino,Robusta,Large,5.0,Medium,Colombia,false,12,"Fruity, Bold",French Press,50c9d4cb-67e0-4a18-9c6b-4a5785b8eda7.jpg
+3,Mocha,Arabica,Medium,4.75,Dark,Guatemala,false,6,"Chocolate, Smooth",Espresso,50c9d4cb-67e0-4a18-9c6b-4a5785b8eda7.jpg
+4,Americano,Robusta,Large,3.25,Light,Kenya,false,15,"Citrus, Balanced",Drip,50c9d4cb-67e0-4a18-9c6b-4a5785b8eda7.jpg
+5,zxczcz,Arabica,Medium,454.0,Light,asdasd,false,0,"Chocolate, Nutty, Fruity, Citrus, Sweet, Creamy, Earthy",French Press,null
+6,asasdasd,Robusta,Medium,65645.0,Medium,asdasd,true,0,"Chocolate, Nutty, Fruity, Citrus, Sweet, Smooth, Bold, Creamy, Earthy",Pour Over,null
+7,asdasdasdasffasdg,Affogato,Medium,56456.0,Light,asdagsdg,true,0,"Nutty, Fruity, Earthy",Pour Over,e6c50334-8279-4248-acd6-1c39e4836cca.png
