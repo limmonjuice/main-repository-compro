@@ -7,8 +7,10 @@
 </head>
 <body>
 
+<!-- Top decorative wave element -->
 <div class="wave wave-top">
   <div class="wave-inner">
+    <!-- Layered SVG wave design -->
     <svg viewBox="0 0 1200 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M0,60 C300,0 900,120 1200,60 L1200,120 L0,120 Z" fill="#74A662"></path>
     </svg>
@@ -18,10 +20,10 @@
   </div>
 </div>
 
-
-
+<!-- Bottom decorative wave element -->
 <div class="wave wave-bottom">
   <div class="wave-inner">
+    <!-- Layered SVG wave design -->
     <svg viewBox="0 0 1200 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M0,60 C300,0 900,120 1200,60 L1200,120 L0,120 Z" fill="#d4b59e"/>
     </svg>
@@ -31,17 +33,23 @@
   </div>
 </div>
 
+<!-- Left-side illustration and brand message -->
 <div class="left-side">
-  <img th:src="@{/images/cafe-illustration.png}" alt="Coffee Shop Illustration">
+  <img th:src="@{/images/login-photos/cafe-illustration.png}" alt="Coffee Shop Illustration">
   <h1>Na-Brew Zone</h1>
   <p>Enjoy a warm cup of coffee while connecting with your friends.</p>
 </div>
 
+<!-- Right-side login form section -->
 <div class="right-side">
+  <!-- Login form bound to the user object -->
   <form action="/login" method="POST" th:object="${user}">
     <h1>Login</h1>
+
+    <!-- Authentication error message (if any) -->
     <p class="auth-error" th:if="${error}" th:text="${error}"></p>
 
+    <!-- Username input field with validation error feedback -->
     <div>
       <label for="username">User Name:</label>
       <input type="text"
@@ -51,6 +59,7 @@
       <p class="error" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
     </div>
 
+    <!-- Password input field with validation error feedback -->
     <div>
       <label for="password">Password:</label>
       <input type="password"
@@ -60,6 +69,7 @@
       <p class="error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
     </div>
 
+    <!-- Submit button -->
     <input type="submit" value="Login">
   </form>
 </div>

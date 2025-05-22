@@ -8,29 +8,28 @@
     <meta charset="UTF-8">
     <title>Coffee Menu</title>
 
-    <!-- Link to catalog-specific stylesheet -->
+    <!-- Coffee menu-specific stylesheet -->
     <link rel="stylesheet" th:href="@{/css/styles_coffeemenu.css}">
 </head>
 <body>
 <section class="content-wrapper">
-    <!-- Page Heading -->
+    <!-- Page title -->
     <h1>Coffee Menu</h1>
 
-    <!-- Search form for filtering catalog items -->
+    <!-- Search bar to filter coffee menu items -->
     <form method="get" th:action="@{/menu}" class="search-bar">
         <input type="text" name="search" placeholder="Search..." th:value="${param.search}">
         <button type="submit">Search</button>
     </form>
 
-    <!-- Container for the coffee cards grid -->
+    <!-- Grid layout to display coffee items -->
     <div class="catalog-grid">
-        <!-- Loop through each coffee item and render a reusable coffee card fragment -->
+        <!-- Iterate over each coffee item and render its corresponding card -->
         <div class="coffee-card" th:each="coffee : ${coffeeList}">
-            <!-- Include the coffee card fragment with current coffee data -->
+            <!-- Insert the coffee card fragment and pass the current coffee object -->
             <div th:replace="~{components/coffee_card :: coffeeCardFragment(coffee=${coffee})}"></div>
         </div>
     </div>
-
 
 </section>
 </body>

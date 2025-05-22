@@ -1,18 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <body>
+
+<!-- Fragment definition for a sidebar menu item -->
 <th:block th:fragment="menuItem(url, label, iconPath, menuKey, activeMenu)">
     <li>
+        <!-- Navigation link with conditional 'active' class -->
         <a th:href="@{${url}}"
            class="menu-item"
            th:classappend="${activeMenu == menuKey ? ' active' : ''}">
+
+            <!-- Menu label and icon -->
             <div class="menu-label">
                 <img th:src="@{${iconPath}}" th:alt="${label + ' icon'}" />
                 <span th:text="${label}">Label</span>
             </div>
+
+            <!-- Arrow indicator -->
             <span class="arrow">›</span>
         </a>
     </li>
 </th:block>
+
 </body>
 </html>

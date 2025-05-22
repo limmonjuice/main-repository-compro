@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Work+Sans:wght@400;600&display=swap');
+
 :root {
     --font-heading: 'Playfair Display', serif;
     --font-body: 'Work Sans', sans-serif;
@@ -46,6 +48,7 @@ body {
     background-color: var(--bg-card);
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border:2px solid #74A662;
 }
 
 .form-container h1 {
@@ -78,7 +81,8 @@ form select {
     font-size: 1rem;
 }
 
-input.error,
+input[type="text"].error,
+input[type="number"].error,
 select.error {
     border-color: var(--danger);
     background-color: var(--danger-bg);

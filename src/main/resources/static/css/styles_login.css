@@ -1,5 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Work+Sans:wght@400;600&display=swap');
 
+:root {
+    /* Fonts */
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Work Sans', sans-serif;
+
+    /* Colors */
+    --bg-main: #f9e7df;
+    --bg-card: #fff;
+    --bg-input: #fffaf5;
+    --text-main: #4d3b2f;
+    --text-secondary: #5f4c42;
+    --border: #c0a98f;
+    --accent-dark: #725b4c;
+    --error: #c0392b;
+    --error-bg: #fff0f0;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -7,11 +24,21 @@
 }
 
 html, body {
-    min-width: 540px;
+    height: 100%;
+    overflow: hidden;
 }
+
+main {
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 100%;
+    box-sizing: border-box;
+}
+
 body {
-    font-family: 'Work Sans', sans-serif;
-    background-color: #f9e7df;
+    font-family: var(--font-body);
+    background-color: var(--bg-main);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -20,6 +47,7 @@ body {
     padding: 0 3rem;
 }
 
+/* === Left Side === */
 .left-side {
     flex: 1;
     display: flex;
@@ -36,18 +64,19 @@ body {
 }
 
 .left-side h1 {
-    font-family: 'Playfair Display', serif;
+    font-family: var(--font-heading);
     font-size: 2.5rem;
-    color: #4d3b2f;
+    color: var(--text-main);
     margin-bottom: 1rem;
 }
 
 .left-side p {
     font-size: 1rem;
-    color: #5f4c42;
+    color: var(--text-secondary);
     max-width: 500px;
 }
 
+/* === Right Side / Form === */
 .right-side {
     flex: 1;
     display: flex;
@@ -56,7 +85,7 @@ body {
 }
 
 form {
-    background-color: #fff;
+    background-color: var(--bg-card);
     padding: 2.5rem;
     border-radius: 20px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
@@ -65,9 +94,9 @@ form {
 }
 
 form h1 {
-    font-family: 'Playfair Display', serif;
+    font-family: var(--font-heading);
     font-size: 2rem;
-    color: #4d3b2f;
+    color: var(--text-main);
     text-align: center;
     margin-bottom: 2rem;
 }
@@ -76,7 +105,7 @@ label {
     display: block;
     margin-bottom: 0.5rem;
     font-weight: 600;
-    color: #4d3b2f;
+    color: var(--text-main);
 }
 
 input[type="text"],
@@ -84,16 +113,16 @@ input[type="password"] {
     width: 100%;
     padding: 0.75rem;
     margin-bottom: 1.5rem;
-    border: 1px solid #c0a98f;
+    border: 1px solid var(--border);
     border-radius: 8px;
-    background-color: #fffaf5;
+    background-color: var(--bg-input);
     font-size: 1rem;
 }
 
 input[type="submit"] {
     width: 100%;
     padding: 0.8rem;
-    background-color: #4d3b2f;
+    background-color: var(--text-main);
     color: #fff;
     border: none;
     border-radius: 10px;
@@ -104,26 +133,37 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-    background-color: #725b4c;
+    background-color: var(--accent-dark);
 }
 
+/* === Error Styles === */
 input[type="text"].input-error,
 input[type="password"].input-error {
-    border: 2px solid #c0392b;
-    background-color: #fff0f0;
+    border: 2px solid var(--error);
+    background-color: var(--error-bg);
 }
 
 .error {
-    color: #c0392b;
+    color: var(--error);
     font-size: 0.9rem;
     margin-top: -1rem;
     margin-bottom: 1rem;
 }
 
+.auth-error {
+    color: var(--error);
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    padding: 0;
+}
+
+/* === Waves === */
 .wave {
     position: absolute;
     width: 100%;
-    height: 8vw; /* Responsive height */
+    height: 8vw;
     overflow: hidden;
     z-index: -1;
     left: 0;
@@ -131,7 +171,7 @@ input[type="password"].input-error {
 
 .wave-top {
     top: 0;
-    transform: rotate(180deg); /* Invert the wave for top */
+    transform: rotate(180deg);
 }
 
 .wave-bottom {
@@ -144,10 +184,7 @@ input[type="password"].input-error {
     height: 100%;
 }
 
-.wave-top .wave-inner {
-    animation: waveSlide 8s linear infinite;
-}
-
+.wave-top .wave-inner,
 .wave-bottom .wave-inner {
     animation: waveSlide 8s linear infinite;
 }
@@ -159,19 +196,12 @@ input[type="password"].input-error {
     display: block;
     object-fit: cover;
 }
-.auth-error {
-    color: #c0392b;
-    font-size: 1rem;
-    font-weight: 600;
-    text-align: center;
-    margin-bottom: 1.5rem;
-    padding: 0;
-}
 
 @keyframes waveSlide {
-    0% { transform: translateX(-50%); }
-    100% { transform: translateX(0); }
+    0% {
+        transform: translateX(-50%);
+    }
+    100% {
+        transform: translateX(0);
+    }
 }
-
-
-

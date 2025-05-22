@@ -11,10 +11,20 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Service class for managing application users.
+ * Loads user data from a CSV file and provides methods to find and save users.
+ */
 @Service
 public class AppUserService {
     private List<AppUser> appUsers;
 
+    /**
+     * Initializes the service by loading user data from the CSV file.
+     * This method is called automatically after the service is constructed.
+     *
+     * @throws IOException if there is an error reading the users.csv file.
+     */
     @PostConstruct
     public void init() throws IOException {
         appUsers = new ArrayList<>();
@@ -32,6 +42,12 @@ public class AppUserService {
         }
     }
 
+    /**
+     * Finds and returns an AppUser by their username.
+     *
+     * @param username the username to search for.
+     * @return the AppUser object if found; otherwise, null.
+     */
     public AppUser findByUsername(String username) {
         return appUsers.stream()
                 .filter(u -> u.getUsername().equals(username))
@@ -40,7 +56,6 @@ public class AppUserService {
     }
 
     public void save(AppUser appUser) {
-        //TO DO
+
     }
 }
-

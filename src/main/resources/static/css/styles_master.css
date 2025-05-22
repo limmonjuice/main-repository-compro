@@ -1,18 +1,32 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:wght@400;600;700;900&display=swap');
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100..900;1,100..900&family=Poppins:wght@400;600;700;900&display=swap');
 
+:root {
+    /* Fonts */
+    --font-main: 'Poppins', sans-serif;
+    --font-brand: 'Playfair Display', serif;
 
-}
-:root{
-    --primary: #ffffff;
-    --secondary: #000000;
-    --tertiary: #FAFBFF;
-    --accent: #5932EA;
-    --font-color: #9197B3;
-    --font: "Poppins", sans-serif;
+    /* Colors */
+    --color-white: #ffffff;
+    --color-black: #000000;
+    --color-bg: #f9e7df;
+    --color-sidebar: #d4b59e;
+    --color-primary-text: #4d3b2f;
+    --color-secondary-text: #9197B3;
+    --color-hover: #74A662;
+    --color-hover-shadow: 0 0 8px var(--color-hover),
+    0 0 20px var(--color-hover),
+    0 0 30px var(--color-hover);
+
+    /* Layout */
+    --sidebar-width: 306px;
+    --sidebar-width-collapsed: 102px;
+    --padding-sidebar: 36px 28px;
+    --gap-sm: 8px;
+    --gap-md: 15px;
+    --gap-lg: 64px;
+    --radius: 10px;
+    --transition-fast: 0.3s ease;
+    --transition-slow: 2s ease;
 }
 
 *,
@@ -23,64 +37,85 @@
     padding: 0;
 }
 
-body{
-    font-family: var(--font);
+body {
+    font-family: var(--font-main);
     display: grid;
-    grid-template-columns: 306px 1fr;
+    grid-template-columns: var(--sidebar-width) 1fr;
     grid-template-areas: "sidebar main";
     min-height: 100vh;
-    transition: all .3s ease;
-    margin: 0;
-    background-color: #f9e7df;
+    background-color: var(--color-bg);
+    transition: all var(--transition-fast);
 }
 
-
-aside{
+aside {
     grid-area: sidebar;
-    background-color: #d4b59e;
-    padding: 36px 28px 36px;
+    background-color: var(--color-sidebar);
+    padding: var(--padding-sidebar);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    color: #4d3b2f;!important;
+    color: var(--color-primary-text);
 }
 
-
-.brand{
-    margin-bottom: 64px;
-    display:flex;
+.brand {
+    display: flex;
     align-items: center;
-    gap: 8px;
+    gap: var(--gap-sm);
+    margin-bottom: var(--gap-lg);
 }
 
-
-.brand span{
+.brand span {
+    font-family: var(--font-brand);
     font-weight: 600;
-    font-size: 26px;
-
+    font-size: 40px;
+    animation: glowPulse 3s ease-in-out infinite;
+    transition: color var(--transition-slow);
 }
 
-
-.brand img {
-    margin-top:10px;
-    height: clamp(46px, 6vw, 72px); /* Responsive height */
-    width: auto;
-    object-fit: cover;
-    transition: all 0.3s ease;
+@keyframes glowPulse {
+    0%, 100% {
+        color: var(--color-primary-text);
+        text-shadow: 0 0 5px var(--color-primary-text);
+    }
+    50% {
+        color: var(--color-hover);
+        text-shadow: var(--color-hover-shadow);
+    }
 }
 
-.user-profile{
-    display:flex;
-    align-items: center;
-    gap: 8px;
-}
+.brand img,
 .user-profile img {
-    height: clamp(46px, 6vw, 72px); /* Responsive height */
-    width: auto;
+    margin-top: 10px;
+    height: clamp(46px, 6vw, 72px);
     object-fit: cover;
-    transition: all 0.3s ease;
+    transition: all var(--transition-fast);
+    border-radius: var(--radius);
+    border: 1px solid var(--color-hover);
 }
 
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: var(--gap-sm);
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-md);
+}
+
+.menu > ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-md);
+}
+
+.menu > ul a {
+    text-decoration: none;
+    color: var(--color-primary-text);
+}
 
 .menu-item {
     display: flex;
@@ -90,115 +125,67 @@ aside{
     padding: 10px 15px 10px 12px;
     width: 100%;
     height: 46px;
-    border-radius: 10px;
-    text-decoration: none;
-    color: #4d3b2f;
-    transition: all 0.3s ease-in-out;
+    border-radius: var(--radius);
+    background: none;
+    color: var(--color-primary-text);
+    transition: all var(--transition-fast);
     cursor: pointer;
+    text-decoration: none;
 }
 
 .menu-item:hover,
 .menu-item.active {
-    background-color: #74A662;
-    color: #4d3b2f;
-}
-
-.menu-item:hover .arrow,
-.menu-item.active .arrow {
-    color: #4d3b2f;
-    transform: translateX(4px);
+    background-color: var(--color-hover);
+    color: var(--color-white);
 }
 
 .menu-label {
     display: flex;
     align-items: center;
-    gap: 15px;
-
+    gap: var(--gap-md);
 }
 
-
-.menu-label img{
+.menu-label img {
     width: 24px;
-    height: auto;
-
 }
 
 .arrow {
-    color: #4d3b2f;
+    color: var(--color-primary-text);
     font-size: 18px;
-    transition: transform 0.3s ease;
+    transition: transform var(--transition-fast);
 }
 
+.menu-item:hover .arrow,
+.menu-item.active .arrow {
+    color: var(--color-white);
+    transform: translateX(4px);
+}
 
-
-.menu > ul{
-    list-style-type: none;
+main {
+    grid-area: main;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    gap: 15px;
-}
-
-
-.menu > ul a{
-    text-decoration: none;
-    color: #4d3b2f;
-}
-
-
-
-
-main{
-    display: flex;
-    flex-direction: column;
-    background-color: #f9e7df;
     padding: 20px;
+    background-color: var(--color-bg);
     min-height: 100vh;
 }
 
-
-
-
-.menu-item:hover {
-    background-color: #74A662;
-    color: var(--primary);
-}
-
-.menu-item.active {
-    background-color: #74A662;
-    color: var(--primary);
-}
-
-
-
-
-
-@media(max-width: 48em){
-    body{
-        grid-template-columns: 102px 1fr;
+/* Responsive */
+@media (max-width: 48em) {
+    body {
+        grid-template-columns: var(--sidebar-width-collapsed) 1fr;
     }
 
-
-    ul li span{
+    ul li span,
+    .user-profile h1,
+    .user-profile span,
+    .brand span {
         display: none;
     }
 
-    .user-profile h1, .user-profile span{
-        display: none;
+    .brand img,
+    .user-profile img {
+        border: 1px solid var(--color-hover);
+        border-radius: var(--radius);
     }
-    .brand span{
-        display: none;
-
-    }
-
-    .brand img{
-        border: 1px solid #74A662;
-        border-radius: 10px;
-    }
-
-    .user-profile img{
-        border: 1px solid #74A662;
-        border-radius: 10px;
-    }
-
 }

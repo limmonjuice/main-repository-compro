@@ -12,15 +12,11 @@
                          th:src="@{'/' + ${coffee.coffeePicture}}"
                          alt="Coffee Picture" />
 
-                    <!-- Show default decaf image if no picture and coffee is decaffeinated -->
-                    <img th:if="${(#strings.isEmpty(coffee.coffeePicture) or coffee.coffeePicture == 'null') and coffee.decaf}"
-                         th:src="@{/images/default/default-decaf.png}"
-                         alt="Default Decaf Picture" />
+                    <!-- Show default coffee image if no picture -->
+                    <img th:if="${(#strings.isEmpty(coffee.coffeePicture) or coffee.coffeePicture == 'null')}"
+                         th:src="@{/images/default/default-coffee.png}"
+                         alt="Default Coffee Picture" />
 
-                    <!-- Show default caffeinated image if no picture and coffee is not decaffeinated -->
-                    <img th:if="${(#strings.isEmpty(coffee.coffeePicture) or coffee.coffeePicture == 'null') and !coffee.decaf}"
-                         th:src="@{/images/default/default-caf.png}"
-                         alt="Default Regular Picture" />
                 </div>
 
                 <!-- Coffee name -->

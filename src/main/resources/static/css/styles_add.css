@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Work+Sans:wght@400;600&display=swap');
+
+/* Root variables */
 :root {
     --font-heading: 'Playfair Display', serif;
     --font-body: 'Work Sans', sans-serif;
@@ -12,32 +15,30 @@
     --button-hover: #725b4c;
 }
 
+/* Global styles */
 html, body {
     height: 100%;
-    overflow: hidden; /* Prevent body scroll */
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
 }
 
 main {
-    height: 100vh;           /* Full viewport height */
-    overflow-y: auto;        /* Vertical scrolling */
-    overflow-x: hidden;      /* Prevent horizontal scroll */
+    overflow-x: hidden; /* Prevent horizontal overflow */
     width: 100%;
+    padding: 20px;
     box-sizing: border-box;
-}
-body {
-    margin: 0;
-    padding: 0;
-    font-family: var(--font-body);
-    background-color: var(--bg-main);
-    color: var(--text-main);
 }
 
 .content-wrapper {
     width: 100%;
+    margin: 0 auto;
     padding: 0;
-    margin: 0;
 }
 
+/* Form container styling */
 .form-container {
     width: 100%;
     max-width: 1500px;
@@ -56,6 +57,7 @@ body {
     color: var(--text-main);
 }
 
+/* Form elements */
 form label {
     display: block;
     margin-bottom: 6px;
@@ -78,7 +80,9 @@ form select {
     font-size: 1rem;
 }
 
-input.error,
+/* Error styling */
+input[type="text"].error,
+input[type="number"].error,
 select.error {
     border-color: var(--danger);
     background-color: var(--danger-bg);
@@ -87,10 +91,10 @@ select.error {
 .error-message {
     color: var(--danger);
     font-size: 0.85rem;
-    margin-top: -10px;
-    margin-bottom: 10px;
+    margin: -10px 0 10px;
 }
 
+/* Decaf checkbox styling */
 .decaf-checkbox {
     display: flex;
     align-items: center;
@@ -104,6 +108,7 @@ select.error {
     cursor: pointer;
 }
 
+/* Flavor notes checkbox group */
 .flavor-notes-group {
     display: flex;
     flex-wrap: wrap;
@@ -114,20 +119,20 @@ select.error {
 .flavor-notes-group div {
     display: flex;
     align-items: center;
-    /* You can keep or remove this gap */
     gap: 10px;
 }
 
 .flavor-notes-group label {
-    /* remove padding-left or set to 0 */
     padding-left: 0;
     display: flex;
     align-items: center;
 }
 
 .flavor-notes-group label input[type="checkbox"] {
-    margin-right: 8px; /* adjust spacing as needed */
+    margin-right: 8px;
 }
+
+/* Submit button */
 button[type="submit"] {
     width: 100%;
     padding: 12px;
@@ -145,21 +150,23 @@ button[type="submit"]:hover {
     background-color: var(--button-hover);
 }
 
+/* Back link */
 .back-link {
     display: inline-block;
-    text-align: center;
     width: 100%;
+    text-align: center;
     text-decoration: none;
     color: var(--button-bg);
     font-weight: 600;
     margin-top: 20px;
+    transition: color 0.3s;
 }
 
 .back-link:hover {
     color: var(--button-hover);
 }
 
-
+/* File upload container */
 .file-upload-container {
     display: flex;
     align-items: center;
@@ -178,10 +185,12 @@ button[type="submit"]:hover {
     border-color: var(--button-hover);
 }
 
+/* Hidden file input */
 #coffeePicture {
     display: none;
 }
 
+/* Custom upload button */
 .custom-upload-button {
     background-color: var(--button-bg);
     color: white;
@@ -189,9 +198,10 @@ button[type="submit"]:hover {
     border-radius: 8px;
     font-weight: 600;
     font-size: 1rem;
-    pointer-events: none; /* Disable pointer on button, so container handles click */
+    pointer-events: none; /* Container handles click */
 }
 
+/* File name display */
 #file-name {
     font-size: 0.9rem;
     color: var(--text-main);

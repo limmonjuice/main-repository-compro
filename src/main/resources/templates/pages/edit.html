@@ -111,6 +111,13 @@
       </select>
       <div class="error-message" th:if="${#fields.hasErrors('brewMethod')}" th:errors="*{brewMethod}"></div>
 
+
+      <div id="current-file-info">
+        <p>Current Picture: <span th:text="${coffee.coffeePicture != null ? coffee.coffeePicture : 'No file uploaded'}"></span></p>
+        <!-- Optionally show image preview -->
+        <img th:if="${coffee.coffeePicture != null}" th:src="@{'/' + ${coffee.coffeePicture}}" alt="Current Coffee Picture" style="max-width: 150px; max-height: 150px;" />
+      </div>
+
       <div id="coffeePicture-area">
         <label>Coffee Picture:</label>
         <label for="coffeePicture" class="file-upload-container">
@@ -123,7 +130,7 @@
       <button type="submit">✅ Confirm Edit</button>
     </form>
 
-    <a href="/static" class="back-link">⬅ Back to Coffee List</a>
+    <a th:href="@{/}" class="back-link">Back to Coffee List</a>
   </div>
 </div>
 </body>

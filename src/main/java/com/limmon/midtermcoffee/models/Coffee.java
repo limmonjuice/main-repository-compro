@@ -57,6 +57,7 @@ public class Coffee {
      * @param stock      Quantity of this coffee available in stock.
      * @param flavorNotes List of flavor notes describing the coffee.
      * @param brewMethod Preferred brewing method for this coffee.
+     * @param coffeePicture Picture of Coffee
      */
 
     public Coffee(int id, String name, String type, String size, double price, String roastLevel, String origin, boolean isDecaf, int stock, List<String> flavorNotes, String brewMethod, String coffeePicture) {
@@ -118,6 +119,7 @@ public class Coffee {
     public String getBrewMethod() { return brewMethod; }
     public void setBrewMethod(String brewMethod) { this.brewMethod = brewMethod; }
 
+    /** @return The picture for the coffee. */
     public String getCoffeePicture() { return coffeePicture; }
     public void setCoffeePicture(String coffeePicture) { this.coffeePicture = coffeePicture; }
 }

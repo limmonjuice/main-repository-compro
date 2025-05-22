@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Work+Sans:wght@400;600&display=swap');
 
+/* Root variables */
 :root {
     --font-heading: 'Playfair Display', serif;
     --font-body: 'Work Sans', sans-serif;
@@ -9,38 +10,47 @@
     --border: #c0a98f;
     --accent: #74A662;
     --danger: #c0392b;
-    --shadow: rgba(0, 0, 0, 0.05) 0px 4px 10px;
+    --shadow: rgba(0, 0, 0, 0.05) 0 4px 10px;
 }
 
+/* Global styles */
 html, body {
     height: 100%;
+    margin: 0;
+    padding: 0;
     overflow: hidden; /* Prevent body scroll */
+    font-family: var(--font-body);
+    color: var(--text-main);
+    background-color: var(--bg-main);
+    box-sizing: border-box;
 }
 
+/* Main container with vertical scrolling */
 main {
     height: 100vh;           /* Full viewport height */
-    overflow-y: auto;        /* Vertical scrolling */
+    overflow-y: auto;        /* Vertical scroll only */
     overflow-x: hidden;      /* Prevent horizontal scroll */
     width: 100%;
     box-sizing: border-box;
 }
 
+/* Content wrapper */
 .content-wrapper {
-    font-family: var(--font-body);
     padding: 2rem;
-    background-color: var(--bg-main);
-    color: var(--text-main);
     width: 100%;
     box-sizing: border-box;
+    text-align: center;
+    color: var(--text-main);
 }
 
+/* Page title */
 .content-wrapper h1 {
     font-family: var(--font-heading);
     font-size: 2.5rem;
     margin-bottom: 1.5rem;
-    text-align: center;
 }
 
+/* Search bar */
 .search-bar {
     display: flex;
     justify-content: center;
@@ -50,13 +60,13 @@ main {
 }
 
 .search-bar input[type="text"] {
+    min-width: 240px;
     padding: 0.5rem 0.75rem;
     border: 1px solid var(--border);
     border-radius: 8px;
     font-size: 1rem;
     background-color: #fff;
     color: var(--text-main);
-    min-width: 240px;
 }
 
 .search-bar button {
@@ -74,14 +84,14 @@ main {
     background-color: #725b4c;
 }
 
-/* Coffee Grid Layout */
+/* Coffee catalog grid */
 .catalog-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 1.5rem;
 }
 
-/* Coffee Card Base Styles */
+/* Coffee card base styles */
 .coffee-card {
     background-color: var(--bg-card);
     border: 1px solid var(--border);
@@ -96,16 +106,16 @@ main {
 
 .coffee-card:hover {
     transform: translateY(-5px);
-    box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 20px;
-    background-color: #74A662;
+    box-shadow: rgba(0, 0, 0, 0.08) 0 8px 20px;
+    background-color: var(--accent);
 }
 
-/* Example optional styles for content inside the card */
+/* Coffee card content */
 .coffee-card h2 {
     font-family: var(--font-heading);
     font-size: 1.4rem;
     margin-bottom: 0.5rem;
-    color: var(--text-main);
+    color: inherit;
 }
 
 .coffee-card p {
@@ -116,8 +126,8 @@ main {
 
 .coffee-card .price {
     font-weight: bold;
-    color: var(--accent);
     font-size: 1rem;
+    color: inherit;
 }
 
 .coffee-card img {
@@ -128,6 +138,7 @@ main {
     margin-bottom: 1rem;
 }
 
+/* Link wrapper for card */
 .coffee-card-link {
     display: block;
     text-decoration: none;
@@ -138,9 +149,9 @@ main {
 
 .coffee-card-link:hover {
     transform: scale(1.02);
-
 }
 
+/* Inner container for card content */
 .coffee-card-inner {
     background-color: #fff;
     padding: 1.5rem;
@@ -153,9 +164,7 @@ main {
     text-align: center;
 }
 
-
-
-/* Responsive tweaks */
+/* Responsive adjustments */
 @media (max-width: 600px) {
     .search-bar {
         flex-direction: column;

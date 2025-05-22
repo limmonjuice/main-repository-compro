@@ -11,25 +11,21 @@
     <h1>Coffee Details:</h1>
 
     <div class="container">
-        <!-- Coffee Picture and Info -->
+        <!-- Section for displaying coffee image and summary -->
         <div class="coffeePicture">
             <div class="coffeeHeader">
 
-                <!-- Actual uploaded picture -->
+                <!-- Display uploaded coffee image if available -->
                 <img th:if="${!#strings.isEmpty(coffee.coffeePicture) and coffee.coffeePicture != 'null'}"
                      th:src="@{'/' + ${coffee.coffeePicture}}"
                      alt="Coffee Picture" />
 
-                <!-- Default decaf image -->
-                <img th:if="${(#strings.isEmpty(coffee.coffeePicture) or coffee.coffeePicture == 'null') and coffee.decaf}"
-                     th:src="@{/images/default/default-decaf.png}"
-                     alt="Default Decaf Picture" />
+                <!-- Display a default image if no uploaded picture is found -->
+                <img th:if="${(#strings.isEmpty(coffee.coffeePicture) or coffee.coffeePicture == 'null')}"
+                     th:src="@{/images/default/default-coffee.png}"
+                     alt="Default Coffee Picture" />
 
-                <!-- Default caffeinated image -->
-                <img th:if="${(#strings.isEmpty(coffee.coffeePicture) or coffee.coffeePicture == 'null') and !coffee.decaf}"
-                     th:src="@{/images/default/default-caf.png}"
-                     alt="Default Regular Picture" />
-
+                <!-- Basic coffee info: name, caffeine type, and price -->
                 <div class="coffeeInfo">
                     <h2 th:text="${coffee.name}"></h2>
                     <p th:text="${coffee.decaf} ? 'Decaffeinated' : 'Caffeinated'"></p>
@@ -38,7 +34,7 @@
             </div>
         </div>
 
-        <!-- Coffee Details and Back Button -->
+        <!-- Detailed information about the coffee and navigation link -->
         <div class="details-wrapper">
             <div class="details">
                 <div><strong>Type:</strong> <span th:text="${coffee.type}"></span></div>
@@ -47,6 +43,8 @@
                 <div><strong>Brew Method:</strong> <span th:text="${coffee.brewMethod}"></span></div>
                 <div><strong>Origin:</strong> <span th:text="${coffee.origin}"></span></div>
                 <div><strong>Stock:</strong> <span th:text="${coffee.stock}"></span></div>
+
+                <!-- Display list of flavor notes -->
                 <div class="flavor-notes"><strong>Flavor Notes:</strong>
                     <ul>
                         <li th:each="note : ${coffee.flavorNotes}" th:text="${note}"></li>
@@ -54,9 +52,10 @@
                 </div>
             </div>
 
-            <!-- Back Button at the Bottom -->
+            <!-- Link to return to the main coffee list -->
             <a th:href="@{/}" class="back-link">Back to Coffee List</a>
         </div>
     </div>
+</div>
 </body>
 </html>

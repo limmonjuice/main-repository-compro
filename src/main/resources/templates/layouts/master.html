@@ -12,28 +12,28 @@
 <aside>
     <div class="top">
         <div class="brand">
-            <img th:src="@{/images/coffee-logo.png}" alt="Coffee Shop Logo">
+            <img th:src="@{/images/sidebar-photos/coffee-logo.png}" alt="Coffee Shop Logo">
             <span>Na-Brew Zone</span>
         </div>
         <div class="menu">
             <ul>
-                <!-- Dashboard -->
-                <li th:replace="~{components/menu_item :: menuItem('/', 'Home', '/images/home_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png', 'home', ${activeMenu})}"></li>
+                <!-- Home -->
+                <li th:replace="~{components/menu_item :: menuItem('/', 'Home', '/images/icons/home_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png', 'home', ${activeMenu})}"></li>
 
-                <!-- Product -->
-                <li th:replace="~{components/menu_item :: menuItem('/menu', 'Menu', '/images/package_2_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png', 'menu', ${activeMenu})}"></li>
+                <!-- Menu -->
+                <li th:replace="~{components/menu_item :: menuItem('/menu', 'Menu', '/images/icons/package_2_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png', 'menu', ${activeMenu})}"></li>
 
-                <!-- Customers -->
-                <li th:replace="~{components/menu_item :: menuItem('/add', 'Add Coffee', '/images/coffee_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png', 'add', ${activeMenu})}"></li>
+                <!-- Add Coffee -->
+                <li th:replace="~{components/menu_item :: menuItem('/add', 'Add Coffee', '/images/icons/coffee_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png', 'add', ${activeMenu})}"></li>
 
-                <!-- Income -->
-                <li th:replace="~{components/menu_item :: menuItem('/login', 'Log Out', '/images/logout_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png', 'logout', ${activeMenu})}"></li>
+                <!-- Log Out -->
+                <li th:replace="~{components/menu_item :: menuItem('/logout', 'Log Out', '/images/icons/logout_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png', 'logout', ${activeMenu})}"></li>
             </ul>
         </div>
     </div>
 
     <div class="user-profile">
-        <img th:src="@{/images/profile.jpg}" alt="Profile Pic">
+        <img th:src="@{/images/sidebar-photos/profile.jpg}" alt="Profile Pic">
         <div>
             <h1>Zaimond Lim</h1>
             <span>Gang Bff lang</span>
@@ -44,5 +44,20 @@
 <main>
     <div th:replace="${content}"></div>
 </main>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const fileInput = document.getElementById('coffeePicture');
+        const fileNameSpan = document.getElementById('file-name');
+
+        fileInput.addEventListener('change', function () {
+            if (fileInput.files.length > 0) {
+                fileNameSpan.textContent = fileInput.files[0].name;
+            } else {
+                fileNameSpan.textContent = 'No file chosen';
+            }
+        });
+    });
+</script>
 </body>
 </html>
