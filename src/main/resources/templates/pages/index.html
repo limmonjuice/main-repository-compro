@@ -60,6 +60,11 @@
                         </div>
                     </td>
                 </tr>
+
+                <tr th:if="${#lists.isEmpty(coffees)}" class="no-results">
+                    <td colspan="100%">No results found.</td>
+                </tr>
+
                 </tbody>
             </table>
         </div>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div>
+    <!-- Coffee Card Fragment -->
+    <div th:fragment="coffeeCardFragment(coffee)">
+        <a th:href="@{'/coffee/' + ${coffee.id}}" class="coffee-card-link">
+            <div class="coffee-card-inner">
+                <div class="image">
+                    <!-- Display uploaded coffee picture if available and not "null" -->
+                    <img th:if="${!#strings.isEmpty(coffee.coffeePicture) and coffee.coffeePicture != 'null'}"
+                         th:src="@{'/' + ${coffee.coffeePicture}}"
+                         alt="Coffee Picture" />
+
+                    <!-- Show default decaf image if no picture and coffee is decaffeinated -->
+                    <img th:if="${(#strings.isEmpty(coffee.coffeePicture) or coffee.coffeePicture == 'null') and coffee.decaf}"
+                         th:src="@{/images/default/default-decaf.png}"
+                         alt="Default Decaf Picture" />
+
+                    <!-- Show default caffeinated image if no picture and coffee is not decaffeinated -->
+                    <img th:if="${(#strings.isEmpty(coffee.coffeePicture) or coffee.coffeePicture == 'null') and !coffee.decaf}"
+                         th:src="@{/images/default/default-caf.png}"
+                         alt="Default Regular Picture" />
+                </div>
+
+                <!-- Coffee name -->
+                <h2 th:text="${coffee.name}">Coffee Name</h2>
+
+                <!-- Coffee price -->
+                <p>Php <span th:text="${coffee.price}">0.00</span></p>
+            </div>
+        </a>
+    </div>
+</div>
+</body>
+</html>

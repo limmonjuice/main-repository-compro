@@ -22,9 +22,7 @@
     margin: 0;
     padding: 0;
 }
-html, body {
-    min-width: 300px;
-}
+
 body{
     font-family: var(--font);
     display: grid;
@@ -39,14 +37,13 @@ body{
 
 aside{
     grid-area: sidebar;
-    background-color: var(--primary);
-    padding: 36px 28px 78px;
+    background-color: #d4b59e;
+    padding: 36px 28px 36px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    color: #4d3b2f;!important;
 }
-
-
 
 
 .brand{
@@ -60,12 +57,28 @@ aside{
 .brand span{
     font-weight: 600;
     font-size: 26px;
+
 }
 
 
-.brand img{
-    width: 37px;
-    height: auto;
+.brand img {
+    margin-top:10px;
+    height: clamp(46px, 6vw, 72px); /* Responsive height */
+    width: auto;
+    object-fit: cover;
+    transition: all 0.3s ease;
+}
+
+.user-profile{
+    display:flex;
+    align-items: center;
+    gap: 8px;
+}
+.user-profile img {
+    height: clamp(46px, 6vw, 72px); /* Responsive height */
+    width: auto;
+    object-fit: cover;
+    transition: all 0.3s ease;
 }
 
 
@@ -79,20 +92,20 @@ aside{
     height: 46px;
     border-radius: 10px;
     text-decoration: none;
-    color: var(--font-color);
+    color: #4d3b2f;
     transition: all 0.3s ease-in-out;
     cursor: pointer;
 }
 
 .menu-item:hover,
 .menu-item.active {
-    background-color: var(--accent);
-    color: var(--primary);
+    background-color: #74A662;
+    color: #4d3b2f;
 }
 
 .menu-item:hover .arrow,
 .menu-item.active .arrow {
-    color: var(--primary);
+    color: #4d3b2f;
     transform: translateX(4px);
 }
 
@@ -111,7 +124,7 @@ aside{
 }
 
 .arrow {
-    color: var(--font-color);
+    color: #4d3b2f;
     font-size: 18px;
     transition: transform 0.3s ease;
 }
@@ -129,7 +142,7 @@ aside{
 
 .menu > ul a{
     text-decoration: none;
-    color: var(--font-color);
+    color: #4d3b2f;
 }
 
 
@@ -147,12 +160,12 @@ main{
 
 
 .menu-item:hover {
-    background-color: var(--accent);
+    background-color: #74A662;
     color: var(--primary);
 }
 
 .menu-item.active {
-    background-color: var(--accent);
+    background-color: #74A662;
     color: var(--primary);
 }
 
@@ -170,6 +183,22 @@ main{
         display: none;
     }
 
+    .user-profile h1, .user-profile span{
+        display: none;
+    }
+    .brand span{
+        display: none;
 
+    }
+
+    .brand img{
+        border: 1px solid #74A662;
+        border-radius: 10px;
+    }
+
+    .user-profile img{
+        border: 1px solid #74A662;
+        border-radius: 10px;
+    }
 
 }

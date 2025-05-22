@@ -1,30 +1,31 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{layouts/master :: html(content=~{::div}, link=~{::link}, title=~{::title})}">
 <head>
     <meta charset="UTF-8">
     <title>View Coffee | [[${coffee.name}]]</title>
-    <link rel="stylesheet" th:href="@{/css/details.css}">
+    <link rel="stylesheet" th:href="@{/css/styles_coffee.css}">
 </head>
 <body>
 
-<div class="main-content">
+<div class="content-wrapper">
     <h1>Coffee Details:</h1>
 
     <div class="container">
+        <!-- Coffee Picture and Info -->
         <div class="coffeePicture">
             <div class="coffeeHeader">
 
-                <!-- Show actual uploaded picture -->
+                <!-- Actual uploaded picture -->
                 <img th:if="${!#strings.isEmpty(coffee.coffeePicture) and coffee.coffeePicture != 'null'}"
                      th:src="@{'/' + ${coffee.coffeePicture}}"
                      alt="Coffee Picture" />
 
-                <!-- Show default decaf image if no picture and coffee is decaffeinated -->
+                <!-- Default decaf image -->
                 <img th:if="${(#strings.isEmpty(coffee.coffeePicture) or coffee.coffeePicture == 'null') and coffee.decaf}"
                      th:src="@{/images/default/default-decaf.png}"
                      alt="Default Decaf Picture" />
 
-                <!-- Show default caffeinated image if no picture and coffee is not decaffeinated -->
+                <!-- Default caffeinated image -->
                 <img th:if="${(#strings.isEmpty(coffee.coffeePicture) or coffee.coffeePicture == 'null') and !coffee.decaf}"
                      th:src="@{/images/default/default-caf.png}"
                      alt="Default Regular Picture" />
@@ -37,22 +38,25 @@
             </div>
         </div>
 
-        <div class="details">
-            <div><strong>Type:</strong> <span th:text="${coffee.type}"></span></div>
-            <div><strong>Size:</strong> <span th:text="${coffee.size}"></span></div>
-            <div><strong>Roast Level:</strong> <span th:text="${coffee.roastLevel}"></span></div>
-            <div><strong>Brew Method:</strong> <span th:text="${coffee.brewMethod}"></span></div>
-            <div><strong>Origin:</strong> <span th:text="${coffee.origin}"></span></div>
-            <div><strong>Stock:</strong> <span th:text="${coffee.stock}"></span></div>
-            <div><strong>Flavor Notes:</strong>
-                <ul>
-                    <li th:each="note : ${coffee.flavorNotes}" th:text="${note}"></li>
-                </ul>
+        <!-- Coffee Details and Back Button -->
+        <div class="details-wrapper">
+            <div class="details">
+                <div><strong>Type:</strong> <span th:text="${coffee.type}"></span></div>
+                <div><strong>Size:</strong> <span th:text="${coffee.size}"></span></div>
+                <div><strong>Roast Level:</strong> <span th:text="${coffee.roastLevel}"></span></div>
+                <div><strong>Brew Method:</strong> <span th:text="${coffee.brewMethod}"></span></div>
+                <div><strong>Origin:</strong> <span th:text="${coffee.origin}"></span></div>
+                <div><strong>Stock:</strong> <span th:text="${coffee.stock}"></span></div>
+                <div class="flavor-notes"><strong>Flavor Notes:</strong>
+                    <ul>
+                        <li th:each="note : ${coffee.flavorNotes}" th:text="${note}"></li>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <a th:href="@{/static}" class="back">Back to Coffee List</a>
-    </div>
 
-</div>
+            <!-- Back Button at the Bottom -->
+            <a th:href="@{/}" class="back-link">Back to Coffee List</a>
+        </div>
+    </div>
 </body>
 </html>

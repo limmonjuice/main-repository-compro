@@ -19,7 +19,7 @@ body, html {
     font-family: 'Work Sans', sans-serif;
     background-color: #f9e7df;
     color: #4d3b2f;
-    min-width: 300px;
+    min-width: 540px;
 }
 
 .content-wrapper {
@@ -28,7 +28,7 @@ body, html {
     padding: 0;
 }
 
-h1 {
+.content-wrapper h1 {
     font-family: 'Playfair Display', serif;
     font-size: 2.5rem;
     margin-bottom: 1.5rem;
@@ -72,22 +72,32 @@ form button:hover {
 
 .table-container {
     overflow-x: auto; /* enable both horizontal and vertical scroll */
-    border: 1px solid #c0a98f;
+    border: 1px solid #4d3b2f;
     border-radius: 12px;
     background-color: #fffaf5;
     padding: 1rem;
     box-sizing: border-box;
     width: 100%;
+
+}
+
+.no-results td {
+    text-align: center;
+    font-style: italic;
+    padding: 2rem;
+    color: #a48872;
+    background-color: #fffaf5;
 }
 
 /* Make the table wider than its container */
 table {
-    width: auto; /* let it size itself */
+    width: 100%; /* let it size itself */
     min-width: 1200px; /* adjust this to your desired min width */
     border-collapse: collapse;
     border-spacing: 0 12px;
     font-size: 1.1rem; /* slightly bigger text */
     color: #4d3b2f;
+    table-layout: auto;
 }
 
 .table-wrapper {
@@ -97,14 +107,14 @@ table {
 }
 
 thead tr {
-    background-color: #4d3b2f;
-    color: #e3d8ce;
+    background-color:#d4b59e ;
+    color: #4d3b2f;
 }
 
 th, td {
     padding: 0.75rem 1rem;
     text-align: center;
-    border: 1px solid #c0a98f;
+    border: 1px solid #4d3b2f;
 }
 
 td.actions-cell {
@@ -139,11 +149,11 @@ tbody tr:hover {
 }
 
 .actions a.edit {
-    border-color: #725b4c;
+    border-color: #74A662;
 }
 
 .actions a.edit:hover {
-    background-color: #725b4c;
+    background-color: #74A662;
     color: #fff;
 }
 

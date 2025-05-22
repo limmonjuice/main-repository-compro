@@ -110,13 +110,40 @@ public class CoffeeController {
     }
 
     @PostMapping("/update")
-    public String updateCoffee(@Valid @ModelAttribute("coffee") Coffee coffee, BindingResult result, HttpSession session) {
+    public String updateCoffee(@Valid @ModelAttribute("coffee") Coffee coffee, BindingResult result,
+                            @RequestParam("coffeePic") MultipartFile coffeePicture, HttpSession session) {
         AppUser user = (AppUser) session.getAttribute("user");
         if (user == null) return "redirect:/login";
 
         if (result.hasErrors()) {
             return "pages/edit";  // Return the form view with validation errors
         }
+
+        if (!coffeePicture.isEmpty()) {
+            String path = "data/coffee_pictures/";
+            File uploadFolder = new File(path);
+            if (!uploadFolder.exists()) {
+                uploadFolder.mkdirs();
+            }
+
+            String fileName = UUID.randomUUID() + coffeePicture.getOriginalFilename().substring(coffeePicture.getOriginalFilename().lastIndexOf("."));
+            System.out.println("Saving file as: " + fileName);
+            File destination = new File(uploadFolder.getAbsolutePath() + File.separator + fileName);
+            System.out.println("Destination path: " + destination.getAbsolutePath());
+
+            try {
+                System.out.println("Received file: " + coffeePicture.getOriginalFilename());
+                System.out.println("Size: " + coffeePicture.getSize());
+                System.out.println("IsEmpty: " + coffeePicture.isEmpty());
+
+                coffeePicture.transferTo(new File(uploadFolder.getAbsolutePath() + File.separator + fileName));
+                coffee.setCoffeePicture(fileName);
+            } catch (IOException e) {
+                System.out.println("File upload error: " + e.getMessage());
+            }
+        }
+
+
         coffeeService.updateCoffee(coffee.getId(), coffee);
         return "redirect:/";
     }
@@ -137,16 +164,29 @@ public class CoffeeController {
         }
         List<Coffee> searchResults = coffeeService.searchCoffeesByName(keyword);
         model.addAttribute("coffees", searchResults);
+        model.addAttribute("activeMenu", "home");
         return "pages/index";
     }
 
     @GetMapping("/coffee/{id}")
     public String view(@PathVariable int id, Model model, HttpSession session) {
         AppUser user = (AppUser) session.getAttribute("user");
-        if (user == null) return "redirect:pages/login";
+        if (user == null) return "redirect:/login";
 
         Coffee coffee = coffeeService.getCoffeeById(id);
         model.addAttribute("coffee", coffee);
         return "pages/coffee";
     }
+
+    @GetMapping("/menu")
+    public String menu(@RequestParam(defaultValue = "") String search, HttpSession session, Model model) {
+        AppUser user = (AppUser) session.getAttribute("user");
+        if (user == null) return "redirect:/login";
+
+        model.addAttribute("coffeeList", coffeeService.searchCoffeesByName(search));
+        model.addAttribute("activeMenu", "menu");
+        return "pages/coffee-menu";
+    }
+
+
 }

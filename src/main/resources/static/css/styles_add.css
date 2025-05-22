@@ -1,48 +1,67 @@
 :root {
-    --font-family: 'Arial', sans-serif;
-    --main-bg: #f4e7d1;
-    --text-color: #5c4033;
-    --card-bg: #fffaf3;
-    --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    --heading-color: #4e342e;
-    --border-color: #8d6e63;
-    --input-bg: #f9f3ec;
-    --error-color: #d84315;
-    --error-bg: #fdecea;
-    --button-bg: #6d4c41;
-    --button-hover: #4e342e;
-    --link-color: #6d4c41;
-    --link-hover: #3e2723;
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Work Sans', sans-serif;
+    --bg-main: #f9e7df;
+    --bg-card: #fffaf5;
+    --text-main: #4d3b2f;
+    --border: #c0a98f;
+    --accent: #725b4c;
+    --danger: #c0392b;
+    --danger-bg: #fdecea;
+    --button-bg: #4d3b2f;
+    --button-hover: #725b4c;
 }
 
+html, body {
+    height: 100%;
+    overflow: hidden; /* Prevent body scroll */
+}
+
+main {
+    height: 100vh;           /* Full viewport height */
+    overflow-y: auto;        /* Vertical scrolling */
+    overflow-x: hidden;      /* Prevent horizontal scroll */
+    width: 100%;
+    box-sizing: border-box;
+}
 body {
     margin: 0;
     padding: 0;
-    font-family: var(--font-family);
-    background-color: var(--main-bg);
-    color: var(--text-color);
+    font-family: var(--font-body);
+    background-color: var(--bg-main);
+    color: var(--text-main);
+}
+
+.content-wrapper {
+    width: 100%;
+    padding: 0;
+    margin: 0;
 }
 
 .form-container {
-    max-width: 600px;
-    margin: 40px auto;
+    width: 100%;
+    max-width: 1500px;
+    margin: 20px auto;
     padding: 30px;
-    background-color: var(--card-bg);
-    border-radius: 10px;
-    box-shadow: var(--card-shadow);
+    background-color: var(--bg-card);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
+.form-container h1 {
+    font-family: var(--font-heading);
     text-align: center;
-    color: var(--heading-color);
+    font-size: 2rem;
     margin-bottom: 25px;
+    color: var(--text-main);
 }
 
 form label {
     display: block;
     margin-bottom: 6px;
-    font-weight: bold;
-    color: var(--heading-color);
+    font-weight: 600;
+    color: var(--text-main);
+    font-size: 0.95rem;
 }
 
 form input[type="text"],
@@ -50,24 +69,24 @@ form input[type="number"],
 form select {
     width: 100%;
     box-sizing: border-box;
-    padding: 10px;
-    border: 1px solid var(--border-color);
-    border-radius: 5px;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
     margin-bottom: 15px;
-    background-color: var(--input-bg);
-    color: var(--heading-color);
+    background-color: #fff;
+    color: var(--text-main);
+    font-size: 1rem;
 }
 
-input[type="text"].error,
-input[type="number"].error,
+input.error,
 select.error {
-    border-color: var(--error-color);
-    background-color: var(--error-bg);
+    border-color: var(--danger);
+    background-color: var(--danger-bg);
 }
 
 .error-message {
-    color: var(--error-color);
-    font-size: 13px;
+    color: var(--danger);
+    font-size: 0.85rem;
     margin-top: -10px;
     margin-bottom: 10px;
 }
@@ -78,15 +97,11 @@ select.error {
     gap: 8px;
     margin-bottom: 15px;
     font-family: inherit;
-    color: var(--heading-color);
+    color: var(--text-main);
 }
 
 .decaf-checkbox input[type="checkbox"] {
     cursor: pointer;
-}
-
-.decaf-checkbox label {
-    font-size: 14px;
 }
 
 .flavor-notes-group {
@@ -99,20 +114,31 @@ select.error {
 .flavor-notes-group div {
     display: flex;
     align-items: center;
-    gap: 5px;
+    /* You can keep or remove this gap */
+    gap: 10px;
 }
 
+.flavor-notes-group label {
+    /* remove padding-left or set to 0 */
+    padding-left: 0;
+    display: flex;
+    align-items: center;
+}
+
+.flavor-notes-group label input[type="checkbox"] {
+    margin-right: 8px; /* adjust spacing as needed */
+}
 button[type="submit"] {
     width: 100%;
     padding: 12px;
     background-color: var(--button-bg);
-    color: white;
+    color: #fff;
     border: none;
-    border-radius: 6px;
-    font-size: 16px;
-    font-weight: bold;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
     cursor: pointer;
-    margin-top: 20px;
+    transition: background-color 0.3s;
 }
 
 button[type="submit"]:hover {
@@ -121,14 +147,56 @@ button[type="submit"]:hover {
 
 .back-link {
     display: inline-block;
-    margin-top: 20px;
     text-align: center;
     width: 100%;
     text-decoration: none;
-    color: var(--link-color);
-    font-weight: bold;
+    color: var(--button-bg);
+    font-weight: 600;
+    margin-top: 20px;
 }
 
 .back-link:hover {
-    color: var(--link-hover);
+    color: var(--button-hover);
+}
+
+
+.file-upload-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background-color: var(--bg-card);
+    border: 2px solid var(--border);
+    padding: 10px 15px;
+    border-radius: 10px;
+    max-width: 100%;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.file-upload-container:hover {
+    border-color: var(--button-hover);
+}
+
+#coffeePicture {
+    display: none;
+}
+
+.custom-upload-button {
+    background-color: var(--button-bg);
+    color: white;
+    padding: 8px 18px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    pointer-events: none; /* Disable pointer on button, so container handles click */
+}
+
+#file-name {
+    font-size: 0.9rem;
+    color: var(--text-main);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 180px;
 }

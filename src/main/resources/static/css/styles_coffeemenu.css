@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Work+Sans:wght@400;600&display=swap');
+
+:root {
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Work Sans', sans-serif;
+    --bg-main: #f9e7df;
+    --bg-card: #fffaf5;
+    --text-main: #4d3b2f;
+    --border: #c0a98f;
+    --accent: #74A662;
+    --danger: #c0392b;
+    --shadow: rgba(0, 0, 0, 0.05) 0px 4px 10px;
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden; /* Prevent body scroll */
+}
+
+main {
+    height: 100vh;           /* Full viewport height */
+    overflow-y: auto;        /* Vertical scrolling */
+    overflow-x: hidden;      /* Prevent horizontal scroll */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.content-wrapper {
+    font-family: var(--font-body);
+    padding: 2rem;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.content-wrapper h1 {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.search-bar {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.search-bar input[type="text"] {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: #fff;
+    color: var(--text-main);
+    min-width: 240px;
+}
+
+.search-bar button {
+    padding: 0.5rem 1.2rem;
+    background-color: var(--text-main);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.search-bar button:hover {
+    background-color: #725b4c;
+}
+
+/* Coffee Grid Layout */
+.catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Coffee Card Base Styles */
+.coffee-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    text-align: center;
+}
+
+.coffee-card:hover {
+    transform: translateY(-5px);
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 20px;
+    background-color: #74A662;
+}
+
+/* Example optional styles for content inside the card */
+.coffee-card h2 {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-main);
+}
+
+.coffee-card p {
+    font-size: 0.95rem;
+    color: #6b584a;
+    margin-bottom: 0.5rem;
+}
+
+.coffee-card .price {
+    font-weight: bold;
+    color: var(--accent);
+    font-size: 1rem;
+}
+
+.coffee-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.coffee-card-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease;
+    height: 100%;
+}
+
+.coffee-card-link:hover {
+    transform: scale(1.02);
+
+}
+
+.coffee-card-inner {
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+    .search-bar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .catalog-grid {
+        grid-template-columns: 1fr;
+    }
+}
