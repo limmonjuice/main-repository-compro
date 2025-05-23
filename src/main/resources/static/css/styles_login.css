@@ -197,6 +197,62 @@ input[type="password"].input-error {
     object-fit: cover;
 }
 
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+        justify-content: center;
+        padding: 2rem 1rem;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .left-side,
+    .right-side {
+        flex: none;
+        width: 100%;
+        padding: 1.5rem 1rem;
+    }
+
+    .left-side {
+        align-items: center;
+        text-align: center;
+    }
+
+    .left-side img {
+        max-width: 60%;
+        margin-bottom: 1.5rem;
+    }
+
+    .left-side h1 {
+        font-size: 2rem;
+    }
+
+    .left-side p {
+        font-size: 0.95rem;
+        max-width: 90%;
+    }
+
+    .right-side {
+        justify-content: center;
+    }
+
+    form {
+        padding: 2rem 1.5rem;
+        max-width: 100%;
+        box-shadow: none;
+        border-radius: 12px;
+    }
+
+    .wave {
+        height: 15vw;
+    }
+
+    .wave-inner svg {
+        height: 100%;
+    }
+}
+
+
 @keyframes waveSlide {
     0% {
         transform: translateX(-50%);
